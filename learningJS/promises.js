@@ -20,3 +20,17 @@ myPromise.then(
     myFunction(err);
   }
 );
+
+const a = Promise.resolve(3);
+const b = new Promise((res, err) => {
+  setTimeout(() => {
+    res("something here");
+  }, 3000);
+});
+const c = new Promise((res, err) => {
+  setTimeout(res, 2000, "Quang Ngoc");
+});
+
+Promise.all([a, b, c]).then((val) => {
+  console.log(val);
+});
