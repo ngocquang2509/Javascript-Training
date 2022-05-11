@@ -1,0 +1,21 @@
+body {
+  margin: auto;
+  font-family: sans-serif;
+}
+
+.active {
+  border: 2px solid greenyellow;
+}
+
+.warning {
+  border: 2px solid red;
+}
+
+.hidden {
+  display: none;
+}
+
+div {
+  padding: 20px;
+  margin: 10px;
+}

@@ -1,4 +1,3 @@
-// Selecting elements
 const demoId = document.querySelector("#demo-id");
 demoId.textContent = "Change the content Demo ID";
 
