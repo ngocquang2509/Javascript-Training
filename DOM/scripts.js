@@ -1,5 +1,11 @@
-let button = document.getElementById("changeBg");
+// Selecting elements
+const demoId = document.querySelector("#demo-id");
+demoId.textContent = "Change the content Demo ID";
 
-button.addEventListener("click", () => {
-  document.body.style.background = "fuchsia";
+const demoClass = document.querySelectorAll(".demo-class");
+
+demoClass.forEach((element) => {
+  element.textContent = "Update all demo class";
 });
+
+demoClass[0];
