@@ -1,0 +1,28 @@
+{
+  "class": [
+    {
+      "id": 1,
+      "totalStudent": 20,
+      "teacher": "Nguyen Van A"
+    },
+    {
+      "id": 2,
+      "totalStudent": 10,
+      "teacher": "Nguyen Van A"
+    }
+  ],
+  "student": [
+    {
+      "class_id": 1,
+      "id": "hs1",
+      "sex": "male",
+      "score": 6
+    },
+    {
+      "class_id": 2,
+      "id": "hs3",
+      "sex": "female",
+      "score": 9
+    }
+  ]
+}
