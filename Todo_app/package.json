@@ -1,0 +1,12 @@
+{
+  "name": "Todo_app",
+  "version": "1.0.0",
+  "description": "MVC Todo Application",
+  "main": "index.js",
+  "author": "Quang Ngoc",
+  "license": "MIT",
+  "dependencies": {
+    "json-server": "^0.17.0",
+    "parcel": "^2.5.0"
+  }
+}
