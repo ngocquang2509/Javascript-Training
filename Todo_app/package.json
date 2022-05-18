@@ -1,0 +1,19 @@
+{
+  "name": "todo_app",
+  "version": "1.0.0",
+  "description": "MVC Todo application",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon main.js"
+  },
+  "author": "Quang Ngoc",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.17.0"
+  },
+  "devDependencies": {
+    "faker": "^6.6.6",
+    "nodemon": "^2.0.16"
+  }
+}
