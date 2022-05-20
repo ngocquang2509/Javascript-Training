@@ -27,8 +27,19 @@ h1 {
   border-radius: 50px;
   background-color: #dae5d0;
 }
-.content__list--task {
+/* .content__list--task {
   width: 861px;
   height: 572px;
   background-color: #dae5d0;
+} */
+
+.content__search {
+  margin: 10px 20px;
+}
+
+input {
+  width: 50%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }
