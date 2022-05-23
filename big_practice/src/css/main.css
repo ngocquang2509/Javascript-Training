@@ -12,28 +12,32 @@ h1 {
   text-align: center;
 }
 
-/* .content {
-  display: flex;
-  flex-direction: column;
-  
-} */
 .content__add--task {
   margin: 20px 0;
 }
 
-.content__btn {
+.btn {
   padding: 10px 20px;
   border: none;
   border-radius: 50px;
   background-color: #dae5d0;
 }
-/* .content__list--task {
-  width: 861px;
-  height: 572px;
-  background-color: #dae5d0;
-} */
 
-.content__search {
+.popup {
+  display: none;
+  position: relative;
+}
+
+.popup .cancel {
+  background-color: red;
+  color: white;
+}
+
+.popup .create {
+  background-color: green;
+}
+
+.popup .content__search {
   margin: 10px 20px;
 }
 

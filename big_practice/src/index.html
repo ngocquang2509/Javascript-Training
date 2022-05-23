@@ -15,7 +15,21 @@
 
     </section> -->
     <div class="content__add--task">
-      <button type="button" class="content__btn">&#43 Add new</button>
+      <button type="button" class="btn">&#43 Add new</button>
+      <div class="popup">
+        
+        <form action="" class="new--task">
+          <h2>New Task</h2>
+          <label for="task--name">Name</label>
+          <input type="text" placeholder="Task name" name="task-name" required>
+
+          <label for="task--description">Description</label>
+          <input type="text" placeholder="Task description" name="task-description">
+
+          <button type="button" class="btn cancel">Cancel</button>
+          <button type="submit" class="btn create">Create</button>
+        </form>
+      </div>
   </div>
   <div class="content__list--task">
     <div class="content__search">
@@ -33,7 +47,7 @@
         <p>2022-05-16</p>
       </div>
       <div class="content__complete">
-        <button type="button" class="btn__complete">Complete</button>
+        <button type="button" class="btn complete">Complete</button>
       </div>
     </div>
   </div>
