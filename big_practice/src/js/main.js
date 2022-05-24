@@ -1,23 +1,8 @@
-const jsonServer = require("json-server");
-const server = jsonServer.create();
-const router = jsonServer.router("db.json");
-const middlewares = jsonServer.defaults();
+import TaskController from "./controller/task_controller";
+import TaskModel from "./model/task_model";
+import TaskView from "./view/task_view";
 
-server.use(middlewares);
+const model = new TaskModel(),
+  view = new TaskView();
 
-server.get("/echo", (req, res) => {
-  res.jsonp(req.query);
-});
-
-server.use(jsonServer.bodyParser);
-server.use((req, res, next) => {
-  if (req.method === "POST") {
-    req.body.createdAt = Date.now();
-  }
-  next();
-});
-
-server.use("", router);
-server.listen(3000, () => {
-  console.log("JSON Server is running");
-});
+const app = new TaskController(model, view);

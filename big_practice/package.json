@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "MVC Todo application",
   "main": "main.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon main.js"
@@ -10,7 +11,8 @@
   "author": "Quang Ngoc",
   "license": "ISC",
   "dependencies": {
-    "json-server": "^0.17.0"
+    "json-server": "^0.17.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "faker": "^6.6.6",
