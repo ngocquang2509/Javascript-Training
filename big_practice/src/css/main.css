@@ -3,17 +3,29 @@
 @import url(./fonts.css);
 
 * {
-  margin: auto;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   background-color: #a0bcc2;
 }
 
 h1 {
   margin: 50px;
-  text-align: center;
 }
 
-.content__add--task {
-  margin: 20px 0;
+input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn {
@@ -23,27 +35,58 @@ h1 {
   background-color: #dae5d0;
 }
 
-.popup {
-  display: none;
-  position: relative;
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
 }
 
-.popup .cancel {
-  background-color: red;
-  color: white;
-}
-
-.popup .create {
-  background-color: green;
-}
-
-.popup .content__search {
-  margin: 10px 20px;
-}
-
-input {
-  width: 50%;
-  padding: 5px 10px;
+.content {
+  width: 861px;
+  height: 572px;
   border-radius: 5px;
-  cursor: pointer;
+  background-color: #dae5d0;
+}
+
+.content__add--task {
+  width: 861px;
+  align-items: flex-start;
+}
+
+.content__filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 20px;
+  margin-right: 50px;
+}
+
+.content__search input {
+  width: 650px;
+  background-color: #fefbe7;
+  border: none;
+  padding: 10px 20px;
+}
+
+.content__task {
+  background-color: #fefbe7;
+  border-radius: 5px;
+  margin: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content__task-title {
+  margin: 20px;
+  font-size: 32px;
+}
+
+.content__task-description {
+  margin: 10px 20px;
+  font-size: 14px;
+}
+
+.content__complete {
+  margin: 0 20px;
 }
