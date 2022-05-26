@@ -2,11 +2,11 @@
   "name": "todo_app",
   "version": "1.0.0",
   "description": "MVC Todo application",
-  "main": "main.js",
+  "main": "src/jsmain.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon main.js"
+    "dev": "nodemon src/js/main.js"
   },
   "author": "Quang Ngoc",
   "license": "ISC",
@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "faker": "^6.6.6",
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "parcel": "^2.6.0"
   }
 }
