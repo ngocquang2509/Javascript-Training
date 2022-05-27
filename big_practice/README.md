@@ -57,7 +57,17 @@ cd big_practice
 npm install
 ```
 
--
+- Run application
+
+```
+npm start
+```
+
+- Open browser with the link below
+
+```
+http://localhost:1234
+```
 
 ## Author
 
