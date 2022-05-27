@@ -14,23 +14,23 @@
     <div class="root">
       <div class="container">
         <div class="content__add--task">
-          <button type="button" class="btn add">&#43 Add new</button>
-          <div class="popup">
+          <button type="button" class="btn add" onclick="addTaskModal()">&#43 Add new</button>
+          <div class="popup" id="add-task">
             <div class="popup__content">
               <form action="" class="new--task">
                   <h2>New Task</h2>
                   <span class="close">&times;</span>
                   <div class="task">
                       <label for="task--name">Name</label>
-                      <input type="text" placeholder="Task name" name="task-name" required>
+                      <input id="add-name" type="text" placeholder="Task name" name="" required>
                   </div>
                 <div class="description">
                   <label for="task--description">Description</label>
-                  <input type="text" placeholder="Task description" name="task-description">
+                  <input id="add-description" type="text" placeholder="Task description" name="">
                 </div>
                 <div class="button">
                   <button type="button" class="btn cancel">Cancel</button>
-                  <button type="submit" class="btn create">Create</button>
+                  <button type="submit" class="btn create" id="submit" onclick="">Create</button>
                 </div>
 
                 </form>
@@ -67,6 +67,13 @@
   
     </div>
     
+    <script type="text/javascript">
+      var addNewTask = document.getElementById('add-task');
+      function modalAddTask() {
+        addNewTask.classList.add("open-add-modal");
+        document.getElementById("").style.opacity = 1;
+      }
+    </script>
     <script type="module" src="../src/js/main.js"></script>
   </body>
 </html>
