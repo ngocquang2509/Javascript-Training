@@ -7,23 +7,26 @@ export default class TaskModel {
     this.tasks = [];
   }
 
-  bindListChanged(callback) {
-    this.onListChanged = callback;
-  }
+  /* Move to View */
+  // bindListChanged(callback) {
+  //   this.onListChanged = callback;
+  // }
 
-  async addTask(taskText) {
+  async addTask(taskName, taskDescription) {
     await fetch.create(`/${path.PATH_TASK}`),
       {
         id: uuidv4,
-        text: taskText,
+        name: taskName,
+        description: taskDescription,
         complete: false,
       };
   }
 
-  async updateTask(id, updateText) {
+  async updateTask(id, updateName, updateDescription) {
     await fetch.update(`/${path.PATH_TASK}/${id}`, {
       id: id,
-      text: updateText,
+      name: updateName,
+      description: updateDescription,
       complete: false,
     });
   }
