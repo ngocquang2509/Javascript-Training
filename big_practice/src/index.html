@@ -1,79 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/main.css" />
-    <title>Todo Application</title>
-  </head>
-  <body>
-    <header class="header">
-      <h1>My TODO</h1>
-    </header>
-    <div class="root">
-      <div class="container">
-        <div class="content__add--task">
-          <button type="button" class="btn add" onclick="addTaskModal()">&#43 Add new</button>
-          <div class="popup" id="add-task">
-            <div class="popup__content">
-              <form action="" class="new--task">
-                  <h2>New Task</h2>
-                  <span class="close">&times;</span>
-                  <div class="task">
-                      <label for="task--name">Name</label>
-                      <input id="add-name" type="text" placeholder="Task name" name="" required>
-                  </div>
-                <div class="description">
-                  <label for="task--description">Description</label>
-                  <input id="add-description" type="text" placeholder="Task description" name="">
-                </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/main.css" />
+  <title>Todo Application</title>
+</head>
+
+<body>
+  <header class="header">
+    <h1>My TODO</h1>
+  </header>
+  <div class="root">
+    <div class="container">
+      <div class="content__add--task">
+        <button type="button" class="btn add" onclick="addTaskModal()">&#43 Add new</button>
+        <div class="popup" id="add-task">
+          <div class="popup__content">
+            <form action="" class="new--task">
+              <div class="header">
+                <h2>New Task</h2>
+              </div>
+
+              <div class="box">
+                <label for="task--name">Name</label>
+                <input id="add-name" class="input" type="text" placeholder="Task name" name="" required>
+
+                <label for="task--description">Description</label>
+                <input id="add-description" class="input" type="text" placeholder="Task description" name="">
+
+            <!-- <span class="close">&times;</span> -->
                 <div class="button">
                   <button type="button" class="btn cancel">Cancel</button>
                   <button type="submit" class="btn create" id="submit" onclick="">Create</button>
                 </div>
+              </div>
+              
 
-                </form>
-            </div>
-        </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="content">
-          <div class="content__filter">
-            <div class="content__search">
-              <input type="text" placeholder="Search...">
-            </div>
-            <div class="content__sort">
-              <p>Sort by: A-Z</p>
-            </div>
-          </div>
-          <div class="content__task">
-            <div class="content__details">
-              <div class="content__task-title">
-                <h2>Task 1</h2>
-              </div>
-              <div class="content__task-description">
-                <p>This is task 1</p>
-                <p>2022-05-16</p>
-              </div>
-            </div>
-            <div class="content__complete">
-              <button type="button" class="btn complete">Complete</button>
-            </div>
+            </form>
           </div>
         </div>
       </div>
-  
     </div>
-    
-    <script type="text/javascript">
-      var addNewTask = document.getElementById('add-task');
-      function modalAddTask() {
-        addNewTask.classList.add("open-add-modal");
-        document.getElementById("").style.opacity = 1;
-      }
-    </script>
-    <script type="module" src="../src/js/main.js"></script>
-  </body>
+    <div class="container">
+      <div class="content">
+        <div class="content__filter">
+          <div class="content__search">
+            <input type="text" placeholder="Search...">
+          </div>
+          <div class="content__sort">
+            <p>Sort by: A-Z</p>
+          </div>
+        </div>
+        <div class="content__task">
+          <div class="content__details">
+            <div class="content__task-title">
+              <h2>Task 1</h2>
+            </div>
+            <div class="content__task-description">
+              <p>This is task 1</p>
+              <p>2022-05-16</p>
+            </div>
+          </div>
+          <div class="content__complete">
+            <button type="button" class="btn complete">Complete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="text/javascript">
+    var addNewTask = document.getElementById('add-task');
+    function modalAddTask() {
+      addNewTask.classList.add("open-add-modal");
+      document.getElementById("").style.opacity = 1;
+    }
+  </script>
+  <script type="module" src="../src/js/main.js"></script>
+</body>
+
 </html>

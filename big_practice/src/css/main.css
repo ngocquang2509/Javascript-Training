@@ -33,6 +33,7 @@ input {
   border: none;
   border-radius: 50px;
   background-color: #dae5d0;
+  cursor: pointer;
 }
 
 .container {
@@ -94,23 +95,46 @@ input {
 .popup {
   display: flex;
   justify-content: center;
+  align-content: center;
 }
 
 .popup__content {
-  display: none;
   width: 601px;
   height: 568px;
   border-radius: 5px;
   background-color: #fefbe7;
 }
 
-.new--task {
+/* .new--task {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .new--task h2 {
   margin: 50px;
+}
+
+.cancel {
+  color: white;
+  background-color: #ff5b5b;
+}
+
+.create {
+  background-color: #71ff02;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.box {
+  padding: 20px;
 }
