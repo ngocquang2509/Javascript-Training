@@ -15,7 +15,7 @@ export default class TaskModel {
   async addTask(taskName, taskDescription) {
     await fetch.create(`/${path.PATH_TASK}`),
       {
-        id: uuidv4,
+        id: new Date().getTime().toString(),
         name: taskName,
         description: taskDescription,
         complete: false,
