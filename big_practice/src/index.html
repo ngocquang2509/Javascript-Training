@@ -16,11 +16,13 @@
   <div class="root">
     <div class="container">
       <div class="content__add--task">
-        <button type="button" class="btn add" onclick="addTaskModal()">&#43 Add new</button>
+        <button id="modalBtn" type="button" class="btn add" onclick="addTaskModal()">&#43 Add new</button>
         <div class="popup" id="add-task">
           <div class="popup__content">
+            <span class="close">&times;</span>
             <form action="" class="new--task">
               <div class="header">
+                
                 <h2>New Task</h2>
               </div>
 
@@ -31,10 +33,10 @@
                 <label for="task--description">Description</label>
                 <input id="add-description" class="input" type="text" placeholder="Task description" name="">
 
-            <!-- <span class="close">&times;</span> -->
+                
                 <div class="button">
                   <button type="button" class="btn cancel">Cancel</button>
-                  <button type="submit" class="btn create" id="submit" onclick="">Create</button>
+                  <button type="submit" class="btn create" id="submit" onclick="submitTask()">Create</button>
                 </div>
               </div>
               
@@ -70,17 +72,40 @@
         </div>
       </div>
     </div>
-
   </div>
 
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     var addNewTask = document.getElementById('add-task');
     function modalAddTask() {
       addNewTask.classList.add("open-add-modal");
-      document.getElementById("").style.opacity = 1;
+      document.getElementById("overlay").style.opacity = 1;
+    }
+
+    function submitTask() {
+      addNewTask.classList.remove("open-add-modal")
+      document.getElementById("overlay").style.opacity = 0;
+    }
+  </script> -->
+
+  <script>
+    var modal = document.getElementById("add-task");
+    var modalBtn = document.getElementById("modalBtn");
+    var span = document.getElementsByClassName("close")[0];
+    modalBtn.onclick = () => {
+      modal.style.display = "block";
+    }
+
+    span.onclick = () => {
+      modal.style.display = "none";
+    }
+
+    window.onclick = (e) => {
+      if (e.target == modal) {
+        modal.style.display = "none"
+      }
     }
   </script>
-  <script type="module" src="../src/js/main.js"></script>
+  <script type="module" src="./js/main.js"></script>
 </body>
 
 </html>
