@@ -62,13 +62,8 @@ export default class TaskView {
   }
 
   bindAddTask(handleAddTask) {
-    this.input.addEventListener("keyup", (e) => {
-      if (e.which === this.ENTER_KEY) {
-        if (this._taskText) {
-          handleAddTask(this._taskText);
-          this._resetInput();
-        }
-      }
+    this.addBtn.addEventListener("click", (e) => {
+      handleAddTask(this.inputName.value, this.inputDescripion.value);
     });
   }
 
@@ -82,22 +77,4 @@ export default class TaskView {
       }
     });
   }
-
-  // var modal = document.getElementsByClassName("popup__content");
-  // var btn = document.getElementsByClassName("btn add");
-  // var span = document.getElementsByClassName("close")[0];
-
-  // btn.onclick = function () {
-  //   modal.style.display = "block";
-  // };
-
-  // span.onclick = function () {
-  //   modal.style.display = "none";
-  // };
-
-  // window.onclick = function (event) {
-  //   if (event.target == modal) {
-  //     modal.style.display = "none";
-  //   }
-  // };
 }
