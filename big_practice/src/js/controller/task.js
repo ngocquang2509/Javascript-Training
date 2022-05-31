@@ -7,15 +7,12 @@ export default class TaskController {
     this.taskView.bindUpdateTodo(this.handleUpdateTask);
   }
 
-  init = async () => {
-    const tasks = await this.model.getTask();
-    console.log("tasks", tasks);
-    this.view.displayTodos(tasks);
+  onTaskListChanged = (tasks) => {
+    this.view.display(tasks);
   };
 
-  handleAddTask = async (taskText) => {
-    const tasks = await this.model.addTask(taskText);
-    this.view.displayTasks(tasks);
+  handleAddTask = (name, description) => {
+    this.model.addTask(name, description);
   };
 
   handleUpdateTask = async (id, taskText) => {
