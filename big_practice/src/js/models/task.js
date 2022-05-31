@@ -1,16 +1,17 @@
-import { v4 as uuidv4 } from "uuid";
-import fetch from "../service";
-import path from "../constant";
+// import { v4 as uuidv4 } from "uuid";
+import fetch from "../service.js";
+import path from "../constant.js";
 
 export default class TaskModel {
   constructor() {
     this.tasks = [];
   }
 
-  /* Move to View */
-  // bindListChanged(callback) {
-  //   this.onListChanged = callback;
-  // }
+  async getTask() {
+    const task = await fetch.get(`/${path.PATH_TASK}`);
+
+    return task;
+  }
 
   async addTask(taskName, taskDescription) {
     await fetch.create(`/${path.PATH_TASK}`),
