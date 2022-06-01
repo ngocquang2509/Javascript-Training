@@ -5,13 +5,13 @@ export default class TaskView {
     this.addBtn = document.getElementById("submit");
   }
 
-  createElement(tag, className) {
-    const element = document.createElement(tag);
+  // createElement(tag, className) {
+  //   const element = document.createElement(tag);
 
-    if (className) element.classList.add(className);
+  //   if (className) element.classList.add(className);
 
-    return element;
-  }
+  //   return element;
+  // }
 
   getElement(selector) {
     const element = document.querySelector(selector);
@@ -22,7 +22,17 @@ export default class TaskView {
   display(allTasks) {
     allTasks().then((task) => {
       if (task.length !== 0) {
-        task.forEach((task) => {});
+        task.forEach((task) => {
+          const item = document.createElement("div");
+          item.id = task.id;
+          item.className = "item-task";
+
+          const des = document.createElement("div");
+          des.className = "item-des";
+          des.textContent = task.description;
+
+          itemBody.append(item, des);
+        });
       }
     });
   }

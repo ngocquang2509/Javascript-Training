@@ -1,9 +1,9 @@
 export default class TaskController {
-  constructor(taskModel, taskView) {
-    this.taskModel = taskModel;
-    this.taskView = taskView;
+  constructor(model, view) {
+    this.model = model;
+    this.view = view;
 
-    this.taskView.bindAddTask(this.handleAddTask);
+    this.view.bindAddTask(this.handleAddTask);
     // this.taskView.bindUpdateTodo(this.handleUpdateTask);
   }
 
