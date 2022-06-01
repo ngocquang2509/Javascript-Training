@@ -10,42 +10,22 @@
 </head>
 
 <body>
+
   <header class="header">
     <h1>My TODO</h1>
   </header>
-  <div class="root">
+
+  <div class="task" id="blur">
     <div class="container">
       <div class="content__add--task">
-        <button id="modalBtn" type="button" class="btn add" onclick="addTaskModal()">&#43 Add new</button>
-        <div class="popup" id="add-task">
-          <div class="popup__content">
-            <span class="close">&times;</span>
-            <form action="" class="new--task">
-              <div class="header">
-                
-                <h2>New Task</h2>
-              </div>
-
-              <div class="box">
-                <label for="task--name">Name</label>
-                <input id="add-name" class="input" type="text" placeholder="Task name" name="" required>
-
-                <label for="task--description">Description</label>
-                <input id="add-description" class="input" type="text" placeholder="Task description" name="">
-
-                
-                <div class="button">
-                  <button type="button" class="btn cancel">Cancel</button>
-                  <button type="submit" class="btn create" id="submit" onclick="submitTask()">Create</button>
-                </div>
-              </div>
-              
-
-            </form>
-          </div>
+        <div class="add-btn">
+          <button data-open-button="#add-task" id="modalBtn" class="btn add" onclick="toggle()">
+            &#43 Add new
+          </button>
         </div>
       </div>
     </div>
+
     <div class="container">
       <div class="content">
         <div class="content__filter">
@@ -74,35 +54,52 @@
     </div>
   </div>
 
-  <!-- <script type="text/javascript">
-    var addNewTask = document.getElementById('add-task');
-    function modalAddTask() {
-      addNewTask.classList.add("open-add-modal");
-      document.getElementById("overlay").style.opacity = 1;
+  <div class="popup" id="add-task">
+    <div class="popup__content">
+
+      <form class="new--task">
+
+        <div class="header">
+          <h2>New Task</h2>
+        </div>
+
+        <div class="box">
+          <label for="task--name">Name</label>
+          <input id="add-name" class="input" type="text" placeholder="Task name" name="" required>
+
+          <label for="task--description">Description</label>
+          <input id="add-description" class="input" type="text" placeholder="Task description" name="">
+
+
+          <div class="button">
+            <button type="button" class="btn cancel" onclick="toggle()">Cancel</button>
+            <button type="submit" class="btn create" id="submit" onclick="submitItem()">Create</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    // var modal = document.getElementById("add-task");
+
+    // var span = document.getElementsByClassName("close")[0];
+    // let addItem = document.getElementById('add-task')
+
+    function toggle() {
+      var modalBtn = document.getElementById("blur");
+      modalBtn.classList.toggle('active');
+      var popup = document.getElementById('add-task')
+      popup.classList.toggle('active')
     }
 
-    function submitTask() {
-      addNewTask.classList.remove("open-add-modal")
-      document.getElementById("overlay").style.opacity = 0;
-    }
-  </script> -->
+    // function openForm() {
+    //   document.getElementById('add-task').style.display = 'block'
+    // }
 
-  <script>
-    var modal = document.getElementById("add-task");
-    var modalBtn = document.getElementById("modalBtn");
-    var span = document.getElementsByClassName("close")[0];
-    modalBtn.onclick = () => {
-      modal.style.display = "block";
-    }
-
-    span.onclick = () => {
-      modal.style.display = "none";
-    }
-
-    window.onclick = (e) => {
-      if (e.target == modal) {
-        modal.style.display = "none"
-      }
+    function closeForm() {
+      document.getElementById('add-task').style.display = 'none'
     }
   </script>
   <script type="module" src="./js/main.js"></script>

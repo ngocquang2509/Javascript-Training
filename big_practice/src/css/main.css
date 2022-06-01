@@ -36,6 +36,12 @@ input {
   cursor: pointer;
 }
 
+.task#blur.active {
+  filter: blur(10px);
+  pointer-events: none;
+  user-select: none;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -93,40 +99,24 @@ input {
 }
 
 .popup {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
   position: fixed;
-  z-index: 1;
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.4
-  ); /* Black w/
-  /* justify-content: center;
-  align-content: center; */
+  top: 30%;
+  right: 30%;
+}
+
+.popup.active {
+  visibility: visible;
+  opacity: 1;
 }
 
 .popup__content {
   /* width: 601px;
   height: 568px; */
+  border: solid 1px black;
   border-radius: 5px;
   background-color: #fefbe7;
-}
-
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  margin: 10px;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
 }
 
 /* .new--task {
@@ -137,7 +127,7 @@ input {
 } */
 
 .new--task h2 {
-  margin: 50px;
+  margin: 20px;
 }
 
 .cancel {
@@ -152,7 +142,8 @@ input {
 .input {
   width: 100%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin-bottom: 30px;
+  margin-top: 10px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -162,10 +153,3 @@ input {
 .box {
   padding: 20px;
 }
-
-/* .overlay {
-  position: fixed;
-  opacity: 0;
-  pointer-events: none;
-  background-color: #fefbe7;
-} */
