@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel"
+    "start": "json-server --watch ./src/server/db.json",
+    "dev": "parcel"
   },
   "author": "Quang Ngoc",
   "license": "ISC",
