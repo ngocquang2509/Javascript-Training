@@ -2,21 +2,8 @@ export default class TaskView {
   constructor() {
     this.inputName = document.getElementById("add-name");
     this.inputDescripion = document.getElementById("add-description");
+    this.tasklist = document.getElementById("tasklist");
     this.addBtn = document.getElementById("submit");
-  }
-
-  // createElement(tag, className) {
-  //   const element = document.createElement(tag);
-
-  //   if (className) element.classList.add(className);
-
-  //   return element;
-  // }
-
-  getElement(selector) {
-    const element = document.querySelector(selector);
-
-    return element;
   }
 
   display(allTasks) {
@@ -25,13 +12,26 @@ export default class TaskView {
         task.forEach((task) => {
           const item = document.createElement("div");
           item.id = task.id;
-          item.className = "item-task";
+          item.className = "content__task";
+
+          const itemBody = document.createElement("div");
+          itemBody.className = "content__details";
+
+          const name = document.createElement("h2");
+          name.className = "content__task-title";
+          name.textContent = task.name;
 
           const des = document.createElement("div");
-          des.className = "item-des";
+          des.className = "content__task-description";
           des.textContent = task.description;
 
-          itemBody.append(item, des);
+          const completeBtn = document.createElement("button");
+          completeBtn.className = "btn complete";
+          completeBtn.textContent = "Complete";
+
+          itemBody.append(name, des);
+          item.append(itemBody, completeBtn);
+          this.tasklist.append(item);
         });
       }
     });

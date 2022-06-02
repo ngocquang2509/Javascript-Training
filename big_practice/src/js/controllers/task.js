@@ -4,7 +4,7 @@ export default class TaskController {
     this.view = view;
 
     this.view.bindAddTask(this.handleAddTask);
-    // this.taskView.bindUpdateTodo(this.handleUpdateTask);
+    this.onTaskListChanged(this.model.showTask);
   }
 
   onTaskListChanged = (tasks) => {
