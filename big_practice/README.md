@@ -57,6 +57,12 @@ cd big_practice
 npm install
 ```
 
+- Run server
+
+```
+npm run dev
+```
+
 - Run application
 
 ```
