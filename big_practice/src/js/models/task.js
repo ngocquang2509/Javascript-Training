@@ -14,13 +14,12 @@ export default class TaskModel {
   }
 
   async addTask(name, description) {
-    await fetch.create(`/${path.PATH_TASK}`),
-      {
-        id: new Date().getTime().toString(),
-        name: name,
-        description: description,
-        complete: false,
-      };
+    await fetch.create(`/${path.PATH_TASK}`, {
+      id: new Date().getTime().toString(),
+      name: name,
+      description: description,
+      complete: false,
+    });
   }
 
   async showTask() {
