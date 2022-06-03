@@ -25,12 +25,24 @@ export default class TaskView {
           des.className = "content__task-description";
           des.textContent = task.description;
 
+          const date = document.createElement("div");
+          date.className = "content__task-date";
+          des.textContent = task.date;
+
           const completeBtn = document.createElement("button");
           completeBtn.className = "btn complete";
           completeBtn.textContent = "Complete";
 
+          const editBtn = document.createElement("button");
+          editBtn.className = "editBtn";
+          editBtn.textContent = "Edit";
+
+          const delBtn = document.createElement("button");
+          delBtn.className = "delBtn";
+          delBtn.textContent = "Delete";
+
           itemBody.append(name, des);
-          item.append(itemBody, completeBtn);
+          item.append(itemBody, completeBtn, editBtn, delBtn);
           this.tasklist.append(item);
         });
       }
@@ -39,6 +51,7 @@ export default class TaskView {
 
   bindAddTask(handleAddTask) {
     this.addBtn.addEventListener("click", (e) => {
+      e.preventDefault();
       handleAddTask(this.inputName.value, this.inputDescripion.value);
     });
   }
