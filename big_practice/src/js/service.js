@@ -3,8 +3,8 @@ import api from "./constant.js";
 /**
  * Function uses url, params and method to return the result requested by the user
  * @param {string} url
- * @param {let} params
- * @param {method} method
+ * @param {object} params
+ * @param {string} method
  * @returns {} result
  */
 
