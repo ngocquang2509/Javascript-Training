@@ -1,18 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
-import fetch from "../service.js";
+import fetch from "../helpers/service.js";
 import path from "../constant.js";
 import today from "../helpers/datetime.js";
 
 export default class TaskModel {
-  constructor() {
-    this.tasks = [];
-  }
-
-  // async getTasks() {
-  //   const task = await fetch.get(`/${path.PATH_TASK}`);
-
-  //   return task;
-  // }
+  constructor() {}
 
   async addTask(name, description, date) {
     date = today;
