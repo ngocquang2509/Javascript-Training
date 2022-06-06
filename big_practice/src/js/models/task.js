@@ -4,17 +4,21 @@ import path from "../constant.js";
 import today from "../helpers/datetime.js";
 
 export default class TaskModel {
-  constructor() {}
+  constructor() {
+    this.tasks = [];
+  }
 
   async addTask(name, description, date) {
     date = today;
-    await fetch.create(`/${path.PATH_TASK}`, {
+    const taskAdded = await fetch.create(`/${path.PATH_TASK}`, {
       id: uuidv4(),
       name: name,
       description: description,
       date: date,
       complete: false,
     });
+
+    this.tasks.push(taskAdded);
   }
 
   async showTask() {
