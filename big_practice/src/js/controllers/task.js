@@ -11,8 +11,8 @@ export default class TaskController {
     this.view.display(tasks);
   };
 
-  handleAddTask = (name, description) => {
-    this.model.addTask(name, description);
+  handleAddTask = (name, description, date) => {
+    this.model.addTask(name, description, date);
   };
 
   handleUpdateTask = async (id, taskText) => {
