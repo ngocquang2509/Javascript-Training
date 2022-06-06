@@ -76,6 +76,12 @@ input {
   padding: 10px 20px;
 }
 
+.message {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
 .content__task {
   background-color: #fefbe7;
   border-radius: 5px;
@@ -85,14 +91,22 @@ input {
   align-items: center;
 }
 
-.content__task-title {
+.task-details {
+}
+
+.task-title {
   margin: 20px;
   font-size: 32px;
 }
 
-.content__task-description {
+.task-description {
   margin: 10px 20px;
   font-size: 14px;
+}
+
+.task_date {
+  margin: 10px 20px;
+  font-size: 12px;
 }
 
 .content__complete {
@@ -153,4 +167,21 @@ input {
 
 .box {
   padding: 20px;
+}
+
+.editBtn {
+  /* margin-right: 20px; */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  background-color: #dae5d0;
+  cursor: pointer;
+}
+
+.delBtn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  background-color: #dae5d0;
+  cursor: pointer;
 }

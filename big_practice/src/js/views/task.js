@@ -8,7 +8,12 @@ export default class TaskView {
 
   display(allTasks) {
     allTasks().then((task) => {
-      if (task.length !== 0) {
+      if (task.length === 0) {
+        const message = document.createElement("p");
+        message.className = "message";
+        message.textContent = "Nothing to do! Add new task";
+        this.tasklist.append(message);
+      } else {
         task.forEach((task) => {
           const item = document.createElement("div");
           item.id = task.id;
@@ -41,7 +46,7 @@ export default class TaskView {
           delBtn.className = "delBtn";
           delBtn.textContent = "Delete";
 
-          itemBody.append(name, des);
+          itemBody.append(name, des, date);
           item.append(itemBody, completeBtn, editBtn, delBtn);
           this.tasklist.append(item);
         });
