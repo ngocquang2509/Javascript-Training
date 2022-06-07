@@ -3,27 +3,33 @@ import fetch from "../helpers/service.js";
 import path from "../constant.js";
 import today from "../helpers/datetime.js";
 
-export default class TaskModel {
+export default class Model {
   constructor() {
     this.tasks = [];
   }
 
+  bindTaskListChanged(callback) {
+    this.onTaskListChanged = callback;
+  }
+
   async addTask(name, description, date) {
-    date = today;
-    const taskAdded = await fetch.create(`/${path.PATH_TASK}`, {
+    // date = today;
+    const item = await fetch.create(`/${path.PATH_TASK}`, {
       id: uuidv4(),
       name: name,
       description: description,
-      date: date,
+      date: today,
       complete: false,
     });
 
-    this.tasks.push(taskAdded);
+    this.tasks.push(item);
+
+    return this.tasks;
   }
 
   async showTask() {
-    const task = await fetch.get(`/${path.PATH_TASK}`);
-    return task;
+    const list = await fetch.get(`/${path.PATH_TASK}`);
+    return list;
   }
 
   async updateTask(id, name, description) {
