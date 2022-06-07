@@ -1,4 +1,4 @@
-export default class TaskView {
+export default class View {
   constructor() {
     this.inputName = document.getElementById("add-name");
     this.inputDescripion = document.getElementById("add-description");
@@ -6,52 +6,53 @@ export default class TaskView {
     this.addBtn = document.getElementById("submit");
   }
 
-  display(allTasks) {
-    allTasks().then((task) => {
-      if (task.length === 0) {
-        const message = document.createElement("p");
-        message.className = "message";
-        message.textContent = "Nothing to do! Add new task";
-        this.tasklist.append(message);
-      } else {
-        task.forEach((task) => {
-          const item = document.createElement("div");
-          item.id = task.id;
-          item.className = "content__task";
+  displayTasks(tasks) {
+    while (this.tasklist.firstChild) {
+      this.tasklist.removeChild(this.tasklist.firstChild);
+    }
+    if (tasks.length === 0) {
+      const message = document.createElement("p");
+      message.className = "message";
+      message.textContent = "Nothing to do! Add new task";
+      this.tasklist.append(message);
+    } else {
+      tasks.forEach((task) => {
+        const item = document.createElement("li");
+        item.id = task.id;
+        item.className = "content__task";
 
-          const itemBody = document.createElement("div");
-          itemBody.className = "content__details";
+        const itemBody = document.createElement("div");
+        itemBody.className = "task-details";
 
-          const name = document.createElement("h2");
-          name.className = "content__task-title";
-          name.textContent = task.name;
+        const name = document.createElement("h2");
+        name.className = "task-title";
+        name.textContent = task.name;
 
-          const des = document.createElement("div");
-          des.className = "content__task-description";
-          des.textContent = task.description;
+        const des = document.createElement("div");
+        des.className = "task-description";
+        des.textContent = task.description;
 
-          const date = document.createElement("div");
-          date.className = "content__task-date";
-          des.textContent = task.date;
+        const action = document.createElement("div");
+        action.className = "task-btn";
 
-          const completeBtn = document.createElement("button");
-          completeBtn.className = "btn complete";
-          completeBtn.textContent = "Complete";
+        const completeBtn = document.createElement("button");
+        completeBtn.className = "btn complete";
+        completeBtn.textContent = "Complete";
 
-          const editBtn = document.createElement("button");
-          editBtn.className = "editBtn";
-          editBtn.textContent = "Edit";
+        const editBtn = document.createElement("button");
+        editBtn.className = "editBtn";
+        editBtn.textContent = "Edit";
 
-          const delBtn = document.createElement("button");
-          delBtn.className = "delBtn";
-          delBtn.textContent = "Delete";
+        const delBtn = document.createElement("button");
+        delBtn.className = "delBtn";
+        delBtn.textContent = "Delete";
 
-          itemBody.append(name, des, date);
-          item.append(itemBody, completeBtn, editBtn, delBtn);
-          this.tasklist.append(item);
-        });
-      }
-    });
+        itemBody.append(name, des);
+        action.append(completeBtn, editBtn, delBtn);
+        item.append(itemBody, action);
+        this.tasklist.append(item);
+      });
+    }
   }
 
   bindAddTask(handleAddTask) {
@@ -61,14 +62,28 @@ export default class TaskView {
     });
   }
 
-  bindUpdateTask(handler) {
-    this.taskList.addEventListener("focusout", (e) => {
-      if (this._temporaryTaskText) {
-        const id = e.target.parentElement.id;
+  // bindUpdateTask(handler) {
+  //   this.taskList.addEventListener("click", (e) => {
+  //     if (this._temporaryTaskText) {
+  //       const id = e.target.parentElement.id;
 
-        handler(id, this._temporaryTaskText);
-        this._temporaryTaskText = "";
+  //       handler(id, this._temporaryTaskText);
+  //       this._temporaryTaskText = "";
+  //     }
+  //   });
+  // }
+
+  bindDeleteTask(handleDeleteTask) {
+    this.tasklist.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (e.target.className === "delBtn") {
+        const id = parseInt(e.target.parentElement.id);
+        handleDeleteTask(id);
       }
     });
+  }
+
+  bindTaskListChanged(callback) {
+    this.onTaskListchanged = callback;
   }
 }
