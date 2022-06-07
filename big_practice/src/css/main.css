@@ -170,18 +170,20 @@ input {
 }
 
 .editBtn {
-  /* margin-right: 20px; */
+  margin-right: 20px;
   padding: 10px 20px;
   border: none;
   border-radius: 50px;
-  background-color: #dae5d0;
+  background-color: yellow;
   cursor: pointer;
 }
 
 .delBtn {
+  margin-right: 20px;
   padding: 10px 20px;
   border: none;
   border-radius: 50px;
-  background-color: #dae5d0;
+  background-color: red;
+  color: white;
   cursor: pointer;
 }
