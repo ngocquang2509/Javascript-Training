@@ -1,8 +1,12 @@
-import TaskModel from "./models/task.js";
-import TaskController from "./controllers/task.js";
-import TaskView from "./views/task.js";
+import Model from "./models/task.js";
+import Controller from "./controllers/task.js";
+import View from "./views/task.js";
 
-const model = new TaskModel(),
-  view = new TaskView();
+// const model = new Model(),
+//   view = new View();
 
-const app = new TaskController(model, view);
+// const app = new Controller(model, view);
+
+const controller = new Controller(new Model(), new View());
+
+controller.init();
