@@ -26,11 +26,11 @@ async function request(url, params, method = "GET") {
 
   const response = await fetch(api.API_HOST + url, options);
 
-  if (response.status !== 200) {
-    return generateErrorResponse(
-      "The server responded with an unexpected status."
-    );
-  }
+  // if (response.status !== 200) {
+  //   return generateErrorResponse(
+  //     "The server responded with an unexpected status."
+  //   );
+  // }
 
   const result = await response.json();
 
