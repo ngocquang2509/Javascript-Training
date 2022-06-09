@@ -17,6 +17,7 @@ export default class View {
       this.tasklist.append(message);
     } else {
       tasks.forEach((task) => {
+        console.log("task", task);
         const item = document.createElement("li");
         item.id = task.id;
         item.className = "content__task";
@@ -77,7 +78,7 @@ export default class View {
     this.tasklist.addEventListener("click", (e) => {
       e.preventDefault();
       if (e.target.className === "delBtn") {
-        const id = parseInt(e.target.parentElement.id);
+        const id = e.target.parentElement.id;
         handleDeleteTask(id);
       }
     });

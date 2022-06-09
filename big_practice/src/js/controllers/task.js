@@ -12,15 +12,17 @@ export default class Controller {
 
   init = async () => {
     const tasks = await this.model.showTask();
-    this.view.displayTasks(tasks);
+    this.onTaskListChanged(this.model.tasks);
+    return tasks;
   };
 
   onTaskListChanged = (tasks) => {
     this.view.displayTasks(tasks);
   };
 
-  handleAddTask = (name, description) => {
-    this.model.addTask(name, description);
+  handleAddTask = async (name, description) => {
+    const task = await this.model.addTask(name, description);
+    this.onTaskListChanged(this.model.tasks);
   };
 
   // handleUpdateTask = async (id, taskText) => {
@@ -28,7 +30,12 @@ export default class Controller {
   //   this.view.displayTasks(tasks);
   // };
 
-  handleDeleteTask = (id) => {
-    this.model.deleteTask(id);
+  // handleDeleteTask = (id) => {
+  //   this.model.deleteTask(id);
+  // };
+
+  handleDeleteTask = async (id) => {
+    const tasks = await this.model.deleteTask(id);
+    this.view.displayTasks(tasks);
   };
 }
