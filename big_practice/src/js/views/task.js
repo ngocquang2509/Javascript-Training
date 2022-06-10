@@ -1,3 +1,5 @@
+import swal from "sweetalert";
+
 export default class View {
   constructor() {
     this.taskName = document.getElementById("add-name");
@@ -61,11 +63,11 @@ export default class View {
     this.addBtn.addEventListener("click", (e) => {
       e.preventDefault();
       if (this.taskName.value == "") {
-        alert("Please enter task name");
+        swal("Please enter task name");
         return false;
       }
       // if (this.taskDescripion == "") {
-      //   alert("Please enter task description");
+      //   swal("Please enter task description");
       //   return false;
       // }
       handleAddTask(this.taskName.value, this.taskDescripion.value);
