@@ -71,6 +71,7 @@ export default class View {
       //   return false;
       // }
       handleAddTask(this.taskName.value, this.taskDescripion.value);
+      swal("Task create successful !");
       return true;
     });
   }
