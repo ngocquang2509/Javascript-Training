@@ -1,20 +1,21 @@
 export default class View {
   constructor() {
-    this.inputName = document.getElementById("add-name");
-    this.inputDescripion = document.getElementById("add-description");
-    this.tasklist = document.getElementById("tasklist");
+    this.taskName = document.getElementById("add-name");
+    this.taskDescripion = document.getElementById("add-description");
+    this.taskList = document.getElementById("tasklist");
     this.addBtn = document.getElementById("submit");
   }
 
   displayTasks(tasks) {
-    while (this.tasklist.firstChild) {
-      this.tasklist.removeChild(this.tasklist.firstChild);
+    //console.log("display tasks");
+    while (this.taskList.firstChild) {
+      this.taskList.removeChild(this.taskList.firstChild);
     }
     if (tasks.length === 0) {
       const message = document.createElement("p");
       message.className = "message";
       message.textContent = "Nothing to do! Add new task";
-      this.tasklist.append(message);
+      this.taskList.append(message);
     } else {
       tasks.forEach((task) => {
         console.log("task", task);
@@ -51,7 +52,7 @@ export default class View {
         itemBody.append(name, des);
         action.append(completeBtn, editBtn, delBtn);
         item.append(itemBody, action);
-        this.tasklist.append(item);
+        this.taskList.append(item);
       });
     }
   }
@@ -59,7 +60,16 @@ export default class View {
   bindAddTask(handleAddTask) {
     this.addBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      handleAddTask(this.inputName.value, this.inputDescripion.value);
+      if (this.taskName.value == "") {
+        alert("Please enter task name");
+        return false;
+      }
+      // if (this.taskDescripion == "") {
+      //   alert("Please enter task description");
+      //   return false;
+      // }
+      handleAddTask(this.taskName.value, this.taskDescripion.value);
+      return true;
     });
   }
 
@@ -75,7 +85,7 @@ export default class View {
   // }
 
   bindDeleteTask(handleDeleteTask) {
-    this.tasklist.addEventListener("click", (e) => {
+    this.taskList.addEventListener("click", (e) => {
       e.preventDefault();
       if (e.target.className === "delBtn") {
         const id = e.target.parentElement.id;
