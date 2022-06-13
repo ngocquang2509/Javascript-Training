@@ -8,6 +8,11 @@ export default class View {
     this.addBtn = document.getElementById("submit");
   }
 
+  resetInput() {
+    this.taskName.value = "";
+    this.taskDescripion.value = "";
+  }
+
   displayTasks(tasks) {
     //console.log("display tasks");
     while (this.taskList.firstChild) {
@@ -59,7 +64,28 @@ export default class View {
     }
   }
 
+  openAddModal() {
+    const addModal = document.getElementById("popup");
+    addModal.style.visibility = "visible";
+    addModal.style.opacity = "1";
+  }
+
+  closeAddModal() {
+    const addModal = document.getElementById("popup");
+    addModal.style.visibility = "hidden";
+    addModal.style.opacity = "0";
+  }
+
   bindAddTask(handleAddTask) {
+    const openModal = document.getElementById("add-new-task");
+    openModal.addEventListener("click", () => {
+      this.openAddModal();
+    });
+    const closeModal = document.getElementById("cancel");
+    closeModal.addEventListener("click", () => {
+      this.closeAddModal();
+      this.resetInput();
+    });
     this.addBtn.addEventListener("click", (e) => {
       e.preventDefault();
       if (this.taskName.value == "") {
@@ -71,6 +97,8 @@ export default class View {
       //   return false;
       // }
       handleAddTask(this.taskName.value, this.taskDescripion.value);
+      this.closeAddModal();
+      this.resetInput();
       swal("Task create successful !");
       return true;
     });

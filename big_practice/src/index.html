@@ -15,33 +15,32 @@
     <h1>My TODO</h1>
   </header>
 
-  <div class="task" id="blur">
-    <div class="container">
-      <div class="content__add--task">
-        <div class="add-btn">
-          <button data-open-button="#add-task" id="modalBtn" class="btn add" onclick="toggle()">
-            &#43 Add new
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="content">
-        <div class="content__filter">
-          <div class="content__search">
-            <input type="text" placeholder="Search...">
-          </div>
-          <div class="content__sort">
-            <p>Sort by: A-Z</p>
-          </div>
-        </div>
-        <ul class="tasklist" id="tasklist"></ul>
+  <div class="container">
+    <div class="content__add--task">
+      <div class="add-btn">
+        <button id="add-new-task" class="btn add">
+          &#43 Add new
+        </button>
       </div>
     </div>
   </div>
 
-  <div class="popup" id="add-task">
+  <div class="container">
+    <div class="content">
+      <div class="content__filter">
+        <div class="content__search">
+          <input type="text" placeholder="Search...">
+        </div>
+        <div class="content__sort">
+          <p>Sort by: A-Z</p>
+        </div>
+      </div>
+      <ul class="tasklist" id="tasklist"></ul>
+    </div>
+  </div>
+
+
+  <div class="popup" id="popup">
     <div class="popup__content">
 
       <form class="new--task">
@@ -58,24 +57,25 @@
           <label for="task--description">Description</label>
           <input id="add-description" class="input" type="text" placeholder="Task description" name="">
           <div class="button">
-            <button type="button" class="btn cancel" onclick="toggle()">Cancel</button>
-            <button type="submit" class="btn create" id="submit" onclick="toggle()">Create</button>
+            <button type="button" class="btn cancel" id="cancel">Cancel</button>
+            <button type="submit" class="btn create" id="submit">Create</button>
           </div>
         </div>
 
       </form>
     </div>
   </div>
+  <div class="overlay" id="overlay"></div>
 
-  <script type="text/javascript">
-    function toggle() {
+  <!-- <script type="text/javascript">
+    function addTaskModal() {
       var modalBtn = document.getElementById("blur");
       modalBtn.classList.toggle('active');
       var popup = document.getElementById('add-task')
       popup.classList.toggle('active')
     }
 
-  </script>
+  </script> -->
   <script type="module" src="./js/main.js"></script>
 </body>
 
