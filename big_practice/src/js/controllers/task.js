@@ -7,7 +7,6 @@ export default class Controller {
     this.view.bindAddTask(this.handleAddTask);
     // this.view.bindUpdateTask(this.handleUpdateTask);
     this.view.bindDeleteTask(this.handleDeleteTask);
-    // this.onTaskListChanged(this.model.showTask);
   }
 
   init = async () => {

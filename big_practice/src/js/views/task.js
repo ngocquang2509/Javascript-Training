@@ -89,13 +89,15 @@ export default class View {
     this.addBtn.addEventListener("click", (e) => {
       e.preventDefault();
       if (this.taskName.value == "") {
-        swal("Please enter task name");
+        alert("Please enter task name");
+        //swal("Please enter task name");
         return false;
       }
-      // if (this.taskDescripion == "") {
-      //   swal("Please enter task description");
-      //   return false;
-      // }
+      if (this.taskDescripion == "") {
+        alert("Please enter task name");
+        //swal("Please enter task description");
+        return false;
+      }
       handleAddTask(this.taskName.value, this.taskDescripion.value);
       this.closeAddModal();
       this.resetInput();
