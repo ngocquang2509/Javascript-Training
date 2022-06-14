@@ -41,17 +41,19 @@
 
   <div class="popup" id="popup">
     <div class="popup__content">
-      <form class="new--task">
-        <div class="header">
+      <form class="new-task">
+        <div class="new-task-header">
           <h2>New Task</h2>
         </div>
         <div class="box">
           <label for="task--name">Name</label>
           <div>
-            <input id="add-name" class="input" type="text" placeholder="Task name" name="" required>
+            <input id="add-name" class="input" type="text" placeholder="Task name" name="">
           </div>
           <label for="task--description">Description</label>
-          <input id="add-description" class="input" type="text" placeholder="Task description" name="">
+          <div>
+            <input id="add-description" class="input" type="text" placeholder="Task description" name="">
+          </div>
           <div class="button">
             <button type="button" class="btn cancel" id="cancel">Cancel</button>
             <button type="submit" class="btn create" id="submit">Create</button>
