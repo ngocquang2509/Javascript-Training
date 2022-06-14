@@ -41,6 +41,10 @@ export default class View {
         des.className = "task-description";
         des.textContent = task.description;
 
+        const createAt = document.createElement("div");
+        createAt.className = "task-createAt";
+        createAt.textContent = task.createAt;
+
         const action = document.createElement("div");
         action.className = "task-btn";
 
@@ -56,7 +60,7 @@ export default class View {
         delBtn.className = "delBtn";
         delBtn.textContent = "Delete";
 
-        itemBody.append(name, des);
+        itemBody.append(name, des, createAt);
         action.append(completeBtn, editBtn, delBtn);
         item.append(itemBody, action);
         this.taskList.append(item);

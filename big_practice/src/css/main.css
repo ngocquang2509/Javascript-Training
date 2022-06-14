@@ -98,10 +98,10 @@ input {
   font-size: 14px;
 }
 
-/* .task_date {
+.task-createAt {
   margin: 10px 20px;
   font-size: 12px;
-} */
+}
 
 .content__complete {
   margin: 0 20px;
