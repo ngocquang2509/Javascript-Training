@@ -1,12 +1,12 @@
 @font-face {
-  font-family: Montserrat, Arial, sans-serif;
+  font-family: Montserrat;
   src: url(../assets/fonts/montserrat/Montserrat-Regular.woff);
   font-style: normal;
   font-weight: normal;
 }
 
 @font-face {
-  font-family: Source-sans-pro, Arial, sans-serif;
+  font-family: Source-sans-pro;
   src: url(../assets/fonts/source-sans-pro/source-sans-pro-v19-latin-regular.woff2);
   font-style: normal;
   font-weight: normal;

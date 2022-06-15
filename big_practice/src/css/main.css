@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Source-sans-pro, sans-serif;
 }
 
 body {
@@ -28,6 +29,7 @@ input {
   align-items: center;
   font-size: 32px;
   margin: 20px 0;
+  font-family: Montserrat, sans-serif;
 }
 
 .btn {
@@ -93,6 +95,7 @@ input {
 .task-title {
   margin: 20px;
   font-size: 32px;
+  font-family: Montserrat, sans-serif;
 }
 
 .task-description {
@@ -103,6 +106,7 @@ input {
 .task-createAt {
   margin: 10px 20px;
   font-size: 12px;
+  font-family: Source-sans-pro, sans-serif;
 }
 
 .content__complete {
