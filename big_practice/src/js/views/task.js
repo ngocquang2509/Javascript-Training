@@ -125,7 +125,7 @@ export default class View {
     this.taskList.addEventListener("click", (e) => {
       e.preventDefault();
       if (e.target.className === "delBtn") {
-        const id = e.target.parentElement.id;
+        const id = e.currentTarget.firstChild.id;
         handleDeleteTask(id);
       }
     });
