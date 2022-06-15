@@ -48,22 +48,25 @@ export default class View {
         const action = document.createElement("div");
         action.className = "task-btn";
 
+        const moreBtn = document.createElement("div");
+        moreBtn.className = "moreBtn";
+
         const completeBtn = document.createElement("button");
         completeBtn.className = "btn complete";
         completeBtn.textContent = "Complete";
 
-        const editBtn = document.createElement("button");
+        const editBtn = document.createElement("div");
         editBtn.className = "editBtn";
         editBtn.textContent = "Edit";
 
-        const delBtn = document.createElement("button");
+        const delBtn = document.createElement("div");
         delBtn.className = "delBtn";
         delBtn.textContent = "Delete";
 
         itemBody.append(name, des, createAt);
-        action.append(completeBtn, editBtn, delBtn);
+        action.append(moreBtn, completeBtn);
         item.append(itemBody, action);
-        this.taskList.append(item);
+        this.taskList.appendChild(item);
       });
     }
   }

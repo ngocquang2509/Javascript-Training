@@ -137,13 +137,6 @@ input {
   background-color: #fefbe7;
 }
 
-/* .new--task {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-} */
-
 .new-task h2 {
   display: flex;
   align-items: center;
@@ -187,6 +180,27 @@ input {
 
 .box {
   padding: 20px;
+}
+
+.task-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.moreBtn {
+  cursor: pointer;
+  margin-bottom: 30px;
+  margin-left: 20px;
+}
+
+.moreBtn:after {
+  content: "\2026";
+  font-size: 32px;
+}
+
+.complete {
+  margin-bottom: 30px;
 }
 
 .editBtn {
