@@ -4,9 +4,9 @@ import path from "../constant.js";
 import today from "../helpers/datetime.js";
 
 export default class Model {
-  tasks = [];
+  //tasks = [];
   constructor() {
-    // this.tasks = [];
+    this.tasks = [];
   }
 
   bindTaskListChanged(callback) {
@@ -33,18 +33,18 @@ export default class Model {
     return item;
   };
 
-  // async updateTask(id, name, description) {
-  //   await fetch.update(`/${path.PATH_TASK}/${id}`, {
-  //     id: id,
-  //     name: name,
-  //     description: description,
-  //     complete: false,
-  //   });
-  // }
+  updateTask = async (id, name, description) => {
+    const index = this.tasks.findIndex((item) => item.id === id);
+    const task = await fetch.update(`/${path.PATH_TASK}/${id}`, {
+      id,
+      name,
+      description,
+      complete: false,
+    });
 
-  // async deleteTask(id) {
-  //   await fetch.remove(`/${path.PATH_TASK}/${id}`);
-  // }
+    this.tasks.splice(index, 1, task);
+    return this.tasks;
+  };
 
   deleteTask = async (id) => {
     const index = this.tasks.findIndex((item) => item.id === id);
