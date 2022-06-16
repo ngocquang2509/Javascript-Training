@@ -27,8 +27,8 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 32px;
   margin: 20px 0;
+  font-size: 32px;
   font-family: Montserrat, sans-serif;
 }
 
@@ -184,11 +184,10 @@ input {
 
 .task-btn {
   display: flex;
-  flex-direction: column;
   align-items: center;
 }
 
-.moreBtn {
+/* .moreBtn {
   cursor: pointer;
   margin-bottom: 30px;
   margin-left: 20px;
@@ -197,15 +196,15 @@ input {
 .moreBtn:after {
   content: "\2026";
   font-size: 32px;
-}
+} */
 
-.complete {
+/* .complete {
   margin-bottom: 30px;
-}
+} */
 
 .editBtn {
   margin-right: 20px;
-  padding: 10px 20px;
+  padding: 10px 30px;
   border: none;
   border-radius: 50px;
   background-color: yellow;
@@ -220,4 +219,29 @@ input {
   background-color: red;
   color: white;
   cursor: pointer;
+}
+
+.edit-modal {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 25%;
+  right: 35%;
+}
+
+.edit-form {
+  width: 601px;
+  height: 568px;
+  border: solid 1px black;
+  border-radius: 5px;
+  background-color: #fefbe7;
+}
+
+.edit-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0;
+  font-size: 32px;
+  font-family: Montserrat, sans-serif;
 }
