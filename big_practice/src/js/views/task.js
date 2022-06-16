@@ -1,3 +1,4 @@
+import { create } from "json-server";
 import swal from "sweetalert";
 
 export default class View {
@@ -48,28 +49,39 @@ export default class View {
         const action = document.createElement("div");
         action.className = "task-btn";
 
-        const moreBtn = document.createElement("div");
-        moreBtn.className = "moreBtn";
-
         const completeBtn = document.createElement("button");
         completeBtn.className = "btn complete";
         completeBtn.textContent = "Complete";
 
-        const editBtn = document.createElement("div");
+        // const moreBtn = document.createElement("div");
+        // moreBtn.className = "moreBtn";
+
+        // const dropdown = document.createElement("div");
+        // dropdown.className = "dropdown-content";
+        // dropdown.setAttribute("id", "dropdown");
+
+        const editBtn = document.createElement("button");
         editBtn.className = "editBtn";
         editBtn.textContent = "Edit";
 
-        const delBtn = document.createElement("div");
+        const delBtn = document.createElement("button");
         delBtn.className = "delBtn";
         delBtn.textContent = "Delete";
 
+        // dropdown.append(editBtn, delBtn);
+
         itemBody.append(name, des, createAt);
-        action.append(moreBtn, completeBtn);
+        action.append(completeBtn, editBtn, delBtn);
         item.append(itemBody, action);
         this.taskList.appendChild(item);
       });
     }
   }
+
+  // showDropDown() {
+  //   var drop = this.moreBtn;
+  //   drop.classList.toogle("show");
+  // }
 
   openAddModal() {
     const addModal = document.getElementById("popup");
@@ -100,11 +112,6 @@ export default class View {
         //swal("Please enter task name");
         return false;
       }
-      if (this.taskDescripion == "") {
-        alert("Please enter task name");
-        //swal("Please enter task description");
-        return false;
-      }
       handleAddTask(this.taskName.value, this.taskDescripion.value);
       this.closeAddModal();
       this.resetInput();
@@ -113,16 +120,69 @@ export default class View {
     });
   }
 
-  // bindUpdateTask(handler) {
-  //   this.taskList.addEventListener("click", (e) => {
-  //     if (this._temporaryTaskText) {
-  //       const id = e.target.parentElement.id;
+  /*openEditModal() {
+    const editModal = document.getElementById("edit");
+    editModal.style.visibility = "hidden";
+    editModal.style.opacity = "0";
+  }*/
 
-  //       handler(id, this._temporaryTaskText);
-  //       this._temporaryTaskText = "";
-  //     }
-  //   });
-  // }
+  /*closeEditModal() {
+    const editModal = document.getElementById("popup");
+    editModal.style.visibility = "hidden";
+    editModal.style.opacity = "0";
+  }*/
+
+  editModal(task) {
+    let editTask = document.getElementById("edit");
+    let editForm = document.createElement("form");
+    editForm.className = "edit-form";
+
+    let editHeader = document.createElement("div");
+    editHeader.className = "edit-header";
+    editHeader.textContent = "Edit Task";
+
+    let box = document.createElement("div");
+    box.className = "box";
+
+    let taskName = document.createElement("label");
+    taskName.textContent = "Name";
+
+    let taskDescripion = document.createElement("label");
+    taskDescripion.textContent = "Description";
+
+    let taskNameInput = document.createElement("input");
+    taskNameInput.className = "input";
+    taskNameInput.placeholder = "Task Name";
+
+    let taskDesInput = document.createElement("input");
+    taskDesInput.className = "input";
+    taskDesInput.placeholder = "Task Description";
+
+    let actions = document.createElement("div");
+    actions.className = "button";
+
+    let submitBtn = document.createElement("button");
+    submitBtn.className = "btn create";
+    submitBtn.type = "submit";
+
+    let cancelBtn = document.createElement("button");
+    cancelBtn.className = "btn cancel";
+    cancelBtn.type = "button";
+  }
+
+  bindUpdateTask(handleUpdateTask) {
+    this.taskList.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (e.currentTarget.className === "editBtn") {
+        const id = e.currentTarget.firstChild.id;
+        //this.openEditModal();
+      }
+      // if (e.target.className === "editBtn") {
+      //   const id = e.currentTarget.firstChild.id;
+      //   handleUpdateTask(id, this.taskName.value, this.taskDescripion.value);
+      // }
+    });
+  }
 
   bindDeleteTask(handleDeleteTask) {
     this.taskList.addEventListener("click", (e) => {
