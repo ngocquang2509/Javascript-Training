@@ -5,12 +5,13 @@ export default class Controller {
 
     this.model.bindTaskListChanged(this.onTaskListChanged);
     this.view.bindAddTask(this.handleAddTask);
-    // this.view.bindUpdateTask(this.handleUpdateTask);
+    this.view.getTaskDetail(this.getTaskId);
+    //this.view.bindUpdateTask(this.handleUpdateTask);
     this.view.bindDeleteTask(this.handleDeleteTask);
   }
 
   init = async () => {
-    const tasks = await this.model.showTask();
+    const tasks = await this.model.getTask();
     this.onTaskListChanged(this.model.tasks);
     return tasks;
   };
@@ -24,13 +25,14 @@ export default class Controller {
     this.onTaskListChanged(this.model.tasks);
   };
 
-  // handleUpdateTask = async (id, taskText) => {
-  //   const tasks = await this.model.updateTodo(id, taskText);
-  //   this.view.displayTasks(tasks);
-  // };
+  getTaskId = (id) => {
+    const task = this.model.getTaskById(id);
+    console.log(task);
+  };
 
-  // handleDeleteTask = (id) => {
-  //   this.model.deleteTask(id);
+  // handleUpdateTask = async (id, name, description) => {
+  //   const tasks = await this.model.updateTask(id, name, description);
+  //   this.view.displayTasks(tasks);
   // };
 
   handleDeleteTask = async (id) => {
