@@ -13,18 +13,17 @@ export default class Model {
     this.onTaskListChanged = callback;
   }
 
-  showTask = async () => {
+  getTask = async () => {
     this.tasks = await fetch.get(`/${path.PATH_TASK}`);
     return this.tasks;
   };
 
-  addTask = async (name, description, createAt) => {
-    createAt = today;
+  addTask = async (name, description) => {
     const item = await fetch.create(`/${path.PATH_TASK}`, {
       id: uuidv4(),
       name,
       description,
-      createAt: createAt,
+      createAt: today,
       complete: false,
     });
 
@@ -53,5 +52,13 @@ export default class Model {
     await fetch.remove(`/${path.PATH_TASK}/${id}`, task);
     this.tasks.splice(index, 1);
     return this.tasks;
+  };
+
+  getTaskById = (id) => {
+    const index = this.tasks.find((item) => item.id === id);
+    const task = this.tasks[index];
+    console.log("task", task);
+
+    //this.task = await fetch.get(`/${path.PATH_TASK}/${id}`);
   };
 }

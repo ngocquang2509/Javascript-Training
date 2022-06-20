@@ -1,4 +1,3 @@
-import { create } from "json-server";
 import swal from "sweetalert";
 
 export default class View {
@@ -26,7 +25,7 @@ export default class View {
       this.taskList.append(message);
     } else {
       tasks.forEach((task) => {
-        console.log("task", task);
+        // console.log("task", task);
         const item = document.createElement("li");
         item.id = task.id;
         item.className = "content__task";
@@ -35,7 +34,7 @@ export default class View {
         itemBody.className = "task-details";
 
         const name = document.createElement("h2");
-        name.className = "task-title";
+        name.className = "task-name";
         name.textContent = task.name;
 
         const des = document.createElement("div");
@@ -53,13 +52,6 @@ export default class View {
         completeBtn.className = "btn complete";
         completeBtn.textContent = "Complete";
 
-        // const moreBtn = document.createElement("div");
-        // moreBtn.className = "moreBtn";
-
-        // const dropdown = document.createElement("div");
-        // dropdown.className = "dropdown-content";
-        // dropdown.setAttribute("id", "dropdown");
-
         const editBtn = document.createElement("button");
         editBtn.className = "editBtn";
         editBtn.textContent = "Edit";
@@ -68,8 +60,6 @@ export default class View {
         delBtn.className = "delBtn";
         delBtn.textContent = "Delete";
 
-        // dropdown.append(editBtn, delBtn);
-
         itemBody.append(name, des, createAt);
         action.append(completeBtn, editBtn, delBtn);
         item.append(itemBody, action);
@@ -77,11 +67,6 @@ export default class View {
       });
     }
   }
-
-  // showDropDown() {
-  //   var drop = this.moreBtn;
-  //   drop.classList.toogle("show");
-  // }
 
   openAddModal() {
     const addModal = document.getElementById("popup");
@@ -120,75 +105,54 @@ export default class View {
     });
   }
 
-  /*openEditModal() {
-    const editModal = document.getElementById("edit");
-    editModal.style.visibility = "hidden";
-    editModal.style.opacity = "0";
-  }*/
-
-  /*closeEditModal() {
-    const editModal = document.getElementById("popup");
-    editModal.style.visibility = "hidden";
-    editModal.style.opacity = "0";
-  }*/
-
-  editModal(task) {
-    let editTask = document.getElementById("edit");
-    let editForm = document.createElement("form");
-    editForm.className = "edit-form";
-
-    let editHeader = document.createElement("div");
-    editHeader.className = "edit-header";
-    editHeader.textContent = "Edit Task";
-
-    let box = document.createElement("div");
-    box.className = "box";
-
-    let taskName = document.createElement("label");
-    taskName.textContent = "Name";
-
-    let taskDescripion = document.createElement("label");
-    taskDescripion.textContent = "Description";
-
-    let taskNameInput = document.createElement("input");
-    taskNameInput.className = "input";
-    taskNameInput.placeholder = "Task Name";
-
-    let taskDesInput = document.createElement("input");
-    taskDesInput.className = "input";
-    taskDesInput.placeholder = "Task Description";
-
-    let actions = document.createElement("div");
-    actions.className = "button";
-
-    let submitBtn = document.createElement("button");
-    submitBtn.className = "btn create";
-    submitBtn.type = "submit";
-
-    let cancelBtn = document.createElement("button");
-    cancelBtn.className = "btn cancel";
-    cancelBtn.type = "button";
+  closeEditModal() {
+    let close = document.getElementById("edit-modal");
+    close.style.visibility = "hidden";
+    close.style.opacity = "0";
   }
 
-  bindUpdateTask(handleUpdateTask) {
+  openEditModal(task = {}) {
+    let open = document.getElementById("edit-modal");
+    open.style.visibility = "visible";
+    open.style.opacity = "1";
+  }
+
+  getTaskDetail(getTaskId) {
     this.taskList.addEventListener("click", (e) => {
       e.preventDefault();
-      if (e.currentTarget.className === "editBtn") {
-        const id = e.currentTarget.firstChild.id;
-        //this.openEditModal();
+      const id = e.target.parentNode.parentNode.id;
+      console.log("id", id);
+      if (e.target.className === "editBtn") {
+        this.openEditModal();
       }
-      // if (e.target.className === "editBtn") {
-      //   const id = e.currentTarget.firstChild.id;
-      //   handleUpdateTask(id, this.taskName.value, this.taskDescripion.value);
-      // }
+      let cancel = document.getElementById("edit-cancel");
+      cancel.addEventListener("click", (e) => {
+        this.closeEditModal();
+      });
     });
   }
+
+  // bindUpdateTask(handleUpdateTask) {
+  //   this.taskList.addEventListener("click", (e) => {
+  //     e.preventDefault();
+  //     if (e.target.className === "editBtn") {
+  //       this.openEditModal();
+  //       const id = e.target.parentNode.parentNode.id;
+  //       console.log("id", id);
+  //     }
+  //     let cancel = document.getElementById("edit-cancel");
+  //     cancel.addEventListener("click", (e) => {
+  //       this.closeEditModal();
+  //     });
+  //   });
+  // }
 
   bindDeleteTask(handleDeleteTask) {
     this.taskList.addEventListener("click", (e) => {
       e.preventDefault();
       if (e.target.className === "delBtn") {
-        const id = e.currentTarget.firstChild.id;
+        const id = e.target.parentNode.parentNode.id;
+        console.log(id);
         handleDeleteTask(id);
       }
     });
