@@ -5,7 +5,7 @@ export default class Controller {
 
     this.model.bindTaskListChanged(this.onTaskListChanged);
     this.view.bindAddTask(this.handleAddTask);
-    this.view.getTaskDetail(this.getTaskId);
+    this.view.editTaskModal(this.getTaskById);
     //this.view.bindUpdateTask(this.handleUpdateTask);
     this.view.bindDeleteTask(this.handleDeleteTask);
   }
@@ -25,9 +25,11 @@ export default class Controller {
     this.onTaskListChanged(this.model.tasks);
   };
 
-  getTaskId = (id) => {
+  getTaskById = (id) => {
     const task = this.model.getTaskById(id);
-    console.log(task);
+    console.log("taskCtrl", task);
+    return task;
+    //return this.model.getTaskById(id);
   };
 
   // handleUpdateTask = async (id, name, description) => {

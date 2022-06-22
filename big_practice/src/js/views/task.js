@@ -43,7 +43,6 @@ export default class View {
 
         const createAt = document.createElement("div");
         createAt.className = "task-createAt";
-        createAt.textContent = task.createAt;
 
         const action = document.createElement("div");
         action.className = "task-btn";
@@ -70,26 +69,26 @@ export default class View {
 
   openAddModal() {
     const addModal = document.getElementById("popup");
-    addModal.style.visibility = "visible";
-    addModal.style.opacity = "1";
+    const openModal = document.getElementById("add-new-task");
+    openModal.addEventListener("click", () => {
+      addModal.style.visibility = "visible";
+      addModal.style.opacity = "1";
+      this.resetInput();
+    });
   }
 
   closeAddModal() {
     const addModal = document.getElementById("popup");
-    addModal.style.visibility = "hidden";
-    addModal.style.opacity = "0";
+    const closeModal = document.getElementById("cancel");
+    closeModal.addEventListener("click", () => {
+      addModal.style.visibility = "hidden";
+      addModal.style.opacity = "0";
+      this.resetInput();
+    });
   }
 
   bindAddTask(handleAddTask) {
-    const openModal = document.getElementById("add-new-task");
-    openModal.addEventListener("click", () => {
-      this.openAddModal();
-    });
-    const closeModal = document.getElementById("cancel");
-    closeModal.addEventListener("click", () => {
-      this.closeAddModal();
-      this.resetInput();
-    });
+    this.openAddModal();
     this.addBtn.addEventListener("click", (e) => {
       e.preventDefault();
       if (this.taskName.value == "") {
@@ -99,53 +98,43 @@ export default class View {
       }
       handleAddTask(this.taskName.value, this.taskDescripion.value);
       this.closeAddModal();
-      this.resetInput();
       swal("Task create successful !");
       return true;
     });
+    this.closeAddModal();
   }
 
   closeEditModal() {
     let close = document.getElementById("edit-modal");
-    close.style.visibility = "hidden";
-    close.style.opacity = "0";
+    let cancel = document.getElementById("edit-cancel");
+    cancel.addEventListener("click", (e) => {
+      close.style.visibility = "hidden";
+      close.style.opacity = "0";
+    });
   }
 
-  openEditModal(task = {}) {
+  openEditModal(task) {
+    // if (task) {
+    //   this.taskName.value = task.name;
+    //   this.taskDescripion.value = task.description;
+    // }
     let open = document.getElementById("edit-modal");
     open.style.visibility = "visible";
     open.style.opacity = "1";
   }
 
-  getTaskDetail(getTaskId) {
+  editTaskModal(handleGetTask) {
     this.taskList.addEventListener("click", (e) => {
       e.preventDefault();
-      const id = e.target.parentNode.parentNode.id;
-      console.log("id", id);
       if (e.target.className === "editBtn") {
-        this.openEditModal();
+        const id = e.target.parentNode.parentNode.id;
+        console.log("id", id);
+        let task = handleGetTask(id);
+        this.openEditModal(task);
       }
-      let cancel = document.getElementById("edit-cancel");
-      cancel.addEventListener("click", (e) => {
-        this.closeEditModal();
-      });
+      this.closeEditModal();
     });
   }
-
-  // bindUpdateTask(handleUpdateTask) {
-  //   this.taskList.addEventListener("click", (e) => {
-  //     e.preventDefault();
-  //     if (e.target.className === "editBtn") {
-  //       this.openEditModal();
-  //       const id = e.target.parentNode.parentNode.id;
-  //       console.log("id", id);
-  //     }
-  //     let cancel = document.getElementById("edit-cancel");
-  //     cancel.addEventListener("click", (e) => {
-  //       this.closeEditModal();
-  //     });
-  //   });
-  // }
 
   bindDeleteTask(handleDeleteTask) {
     this.taskList.addEventListener("click", (e) => {

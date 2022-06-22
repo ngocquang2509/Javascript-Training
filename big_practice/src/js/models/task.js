@@ -55,10 +55,9 @@ export default class Model {
   };
 
   getTaskById = (id) => {
-    const index = this.tasks.find((item) => item.id === id);
-    const task = this.tasks[index];
-    console.log("task", task);
+    const task = this.tasks.find((item) => item.id === id);
+    console.log("taskModel", task);
 
-    //this.task = await fetch.get(`/${path.PATH_TASK}/${id}`);
+    //return this.tasks.find((item) => item.id === id);
   };
 }
