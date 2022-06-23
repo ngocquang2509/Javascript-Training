@@ -4,6 +4,8 @@ export default class View {
   constructor() {
     this.taskName = document.getElementById("add-name");
     this.taskDescripion = document.getElementById("add-description");
+    this.editName = document.getElementById("edit-name");
+    this.editDes = document.getElementById("edit-description");
     this.taskList = document.getElementById("tasklist");
     this.addBtn = document.getElementById("submit");
   }
@@ -73,7 +75,7 @@ export default class View {
     openModal.addEventListener("click", () => {
       addModal.style.visibility = "visible";
       addModal.style.opacity = "1";
-      this.resetInput();
+      //this.resetInput();
     });
   }
 
@@ -83,7 +85,7 @@ export default class View {
     closeModal.addEventListener("click", () => {
       addModal.style.visibility = "hidden";
       addModal.style.opacity = "0";
-      this.resetInput();
+      //this.resetInput();
     });
   }
 
@@ -109,18 +111,17 @@ export default class View {
     let cancel = document.getElementById("edit-cancel");
     cancel.addEventListener("click", (e) => {
       close.style.visibility = "hidden";
-      close.style.opacity = "0";
     });
   }
 
   openEditModal(task) {
-    // if (task) {
-    //   this.taskName.value = task.name;
-    //   this.taskDescripion.value = task.description;
-    // }
+    if (task) {
+      this.editName.value = task.name;
+      this.editDes.value = task.description;
+      console.log("taskTest", task);
+    }
     let open = document.getElementById("edit-modal");
     open.style.visibility = "visible";
-    open.style.opacity = "1";
   }
 
   editTaskModal(handleGetTask) {
@@ -129,11 +130,41 @@ export default class View {
       if (e.target.className === "editBtn") {
         const id = e.target.parentNode.parentNode.id;
         console.log("id", id);
-        let task = handleGetTask(id);
-        this.openEditModal(task);
+        let item = handleGetTask(id);
+        this.openEditModal(item);
       }
       this.closeEditModal();
     });
+  }
+
+  renderModal(item) {
+    return `<div class="popup" id="popup">
+    <div class="popup__content">
+      <form class="new-task">
+        <div class="new-task-header">
+          <h2>${item ? "Edit Task" : "Create Task"}</h2>
+        </div>
+        <div class="box">
+          <label>Name</label>
+          <div>
+            <input id="add-name" class="input" type="text" placeholder="Task name" value = "${
+              item ? item.name : ""
+            }">
+          </div>
+          <label>Description</label>
+          <div>
+            <input id="add-description" class="input" type="text" placeholder="Task description" value = "${
+              item ? item.description : ""
+            }">
+          </div>
+          <div class="button">
+            <button type="button" class="btn cancel" id="cancel">Cancel</button>
+            <button type="submit" class="btn create" id="submit">Create</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>`;
   }
 
   bindDeleteTask(handleDeleteTask) {

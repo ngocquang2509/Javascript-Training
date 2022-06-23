@@ -48,11 +48,11 @@
         <div class="box">
           <label for="task--name">Name</label>
           <div>
-            <input id="add-name" class="input" type="text" placeholder="Task name" name="">
+            <input id="add-name" class="input" type="text" placeholder="Task name">
           </div>
           <label for="task--description">Description</label>
           <div>
-            <input id="add-description" class="input" type="text" placeholder="Task description" name="">
+            <input id="add-description" class="input" type="text" placeholder="Task description">
           </div>
           <div class="button">
             <button type="button" class="btn cancel" id="cancel">Cancel</button>
@@ -63,26 +63,22 @@
     </div>
   </div>
 
-  <div class="edit-modal" id="edit">
-    <!-- <form class="edit-form">
+  <div class="edit-modal" id="edit-modal">
+    <form class="edit-form">
       <div class="edit-header">
         <h2>Edit Task</h2>
       </div>
       <div class="box">
-        <label for="task--name">Name</label>
-        <div>
-          <input id="add-name" class="input" type="text" placeholder="Task name" name="">
-        </div>
-        <label for="task--description">Description</label>
-        <div>
-          <input id="add-description" class="input" type="text" placeholder="Task description" name="">
-        </div>
+        <label>Name</label>
+        <input id="edit-name" class="input" type="text">
+        <label>Description</label>
+        <input id="edit-description" class="input" type="text">
         <div class="button">
-          <button type="button" class="btn cancel" id="cancel">Cancel</button>
-          <button type="submit" class="btn create" id="submit">Submit</button>
+          <button type="button" class="btn cancel" id="edit-cancel">Cancel</button>
+          <button type="submit" class="btn create" id="edit-submit">Submit</button>
         </div>
       </div>
-    </form> -->
+    </form>
   </div>
 
   <script type="module" src="./js/main.js"></script>

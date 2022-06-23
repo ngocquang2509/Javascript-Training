@@ -56,7 +56,8 @@ export default class Model {
 
   getTaskById = (id) => {
     const task = this.tasks.find((item) => item.id === id);
-    console.log("taskModel", task);
+    //console.log("taskModel", task);
+    return task;
 
     //return this.tasks.find((item) => item.id === id);
   };

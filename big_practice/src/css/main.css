@@ -92,7 +92,7 @@ input {
 /* .task-details {
 } */
 
-.task-title {
+.task-name {
   margin: 20px;
   font-size: 32px;
   font-family: Montserrat, sans-serif;
@@ -223,10 +223,10 @@ input {
 
 .edit-modal {
   visibility: hidden;
-  opacity: 0;
   position: fixed;
   top: 25%;
   right: 35%;
+  cursor: pointer;
 }
 
 .edit-form {
