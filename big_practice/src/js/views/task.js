@@ -8,11 +8,14 @@ export default class View {
     this.editDes = document.getElementById("edit-description");
     this.taskList = document.getElementById("tasklist");
     this.addBtn = document.getElementById("submit");
+    this.editBtn = document.getElementById("edit-submit");
+    this.storeId = document.getElementById("store");
   }
 
   resetInput() {
     this.taskName.value = "";
     this.taskDescripion.value = "";
+    this.storeId.value = "";
   }
 
   displayTasks(tasks) {
@@ -74,19 +77,14 @@ export default class View {
     const openModal = document.getElementById("add-new-task");
     openModal.addEventListener("click", () => {
       addModal.style.visibility = "visible";
-      addModal.style.opacity = "1";
-      //this.resetInput();
+      this.resetInput();
     });
   }
 
   closeAddModal() {
     const addModal = document.getElementById("popup");
-    const closeModal = document.getElementById("cancel");
-    closeModal.addEventListener("click", () => {
-      addModal.style.visibility = "hidden";
-      addModal.style.opacity = "0";
-      //this.resetInput();
-    });
+    addModal.style.visibility = "hidden";
+    this.resetInput();
   }
 
   bindAddTask(handleAddTask) {
@@ -103,7 +101,10 @@ export default class View {
       swal("Task create successful !");
       return true;
     });
-    this.closeAddModal();
+    let close = document.getElementById("cancel");
+    close.addEventListener("click", () => {
+      this.closeAddModal();
+    });
   }
 
   closeEditModal() {
@@ -118,18 +119,20 @@ export default class View {
     if (task) {
       this.editName.value = task.name;
       this.editDes.value = task.description;
-      console.log("taskTest", task);
+      //console.log("taskTest", task);
     }
     let open = document.getElementById("edit-modal");
     open.style.visibility = "visible";
   }
 
-  editTaskModal(handleGetTask) {
+  getTaskById(handleGetTask) {
     this.taskList.addEventListener("click", (e) => {
       e.preventDefault();
       if (e.target.className === "editBtn") {
         const id = e.target.parentNode.parentNode.id;
-        console.log("id", id);
+        //console.log("id", id);
+        this.storeId = id;
+        console.log("storeId", this.storeId);
         let item = handleGetTask(id);
         this.openEditModal(item);
       }
@@ -137,34 +140,13 @@ export default class View {
     });
   }
 
-  renderModal(item) {
-    return `<div class="popup" id="popup">
-    <div class="popup__content">
-      <form class="new-task">
-        <div class="new-task-header">
-          <h2>${item ? "Edit Task" : "Create Task"}</h2>
-        </div>
-        <div class="box">
-          <label>Name</label>
-          <div>
-            <input id="add-name" class="input" type="text" placeholder="Task name" value = "${
-              item ? item.name : ""
-            }">
-          </div>
-          <label>Description</label>
-          <div>
-            <input id="add-description" class="input" type="text" placeholder="Task description" value = "${
-              item ? item.description : ""
-            }">
-          </div>
-          <div class="button">
-            <button type="button" class="btn cancel" id="cancel">Cancel</button>
-            <button type="submit" class="btn create" id="submit">Create</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>`;
+  bindEditTask(handleEditTask) {
+    this.editBtn.addEventListener("click", (e) => {
+      const id = this.storeId.value;
+      const updateName = document.getElementById("edit-name");
+      const updateDes = document.getElementById("edit-description");
+      handleEditTask(id, updateName.value, updateDes.value);
+    });
   }
 
   bindDeleteTask(handleDeleteTask) {
@@ -172,7 +154,7 @@ export default class View {
       e.preventDefault();
       if (e.target.className === "delBtn") {
         const id = e.target.parentNode.parentNode.id;
-        console.log(id);
+        //console.log(id);
         handleDeleteTask(id);
       }
     });
