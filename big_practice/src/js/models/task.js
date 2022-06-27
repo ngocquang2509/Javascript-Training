@@ -32,33 +32,46 @@ export default class Model {
     return item;
   };
 
-  updateTask = async (id, name, description) => {
-    const index = this.tasks.findIndex((item) => item.id === id);
-    const task = await fetch.update(`/${path.PATH_TASK}/${id}`, {
-      id,
-      name,
-      description,
-      complete: false,
-    });
+  updateTask = async (task = {}) => {
+    const oldTask = this.getTaskById(task.id);
+    const param = {
+      ...oldTask,
+      name: task.name,
+      description: task.description,
+    };
+    const taskEdit = await fetch.update(
+      `/${path.PATH_TASK}/${taskEdit.id}`,
+      param
+    );
 
-    this.tasks.splice(index, 1, task);
-    return this.tasks;
+    const index = this.tasks.findIndex((item) => item.id === id);
+    this.tasks.splice(index, 1, taskEdit);
+    return taskEdit;
   };
+
+  /*updateTask = async (id, updateName, updateDes) => {
+    const index = this.tasks.findIndex((item) => item.id === id);
+    const taskUpdate = {
+      id,
+      name: updateName,
+      description: updateDes,
+    };
+    await fetch.update(`/${path.PATH_TASK}/${id}`, taskUpdate);
+    this.tasks.splice(index, 1, taskUpdate);
+    return this.tasks;
+  };*/
 
   deleteTask = async (id) => {
     const index = this.tasks.findIndex((item) => item.id === id);
     const task = this.tasks[index];
 
     await fetch.remove(`/${path.PATH_TASK}/${id}`, task);
-    this.tasks.splice(index, 1);
+    this.tasks.splice(index, 1, task);
     return this.tasks;
   };
 
   getTaskById = (id) => {
     const task = this.tasks.find((item) => item.id === id);
-    //console.log("taskModel", task);
     return task;
-
-    //return this.tasks.find((item) => item.id === id);
   };
 }
