@@ -39,12 +39,9 @@ export default class Model {
       name: task.name,
       description: task.description,
     };
-    const taskEdit = await fetch.update(
-      `/${path.PATH_TASK}/${taskEdit.id}`,
-      param
-    );
+    const taskEdit = await fetch.update(`/${path.PATH_TASK}/${task.id}`, param);
 
-    const index = this.tasks.findIndex((item) => item.id === id);
+    const index = this.tasks.findIndex((item) => item.id === task.id);
     this.tasks.splice(index, 1, taskEdit);
     return taskEdit;
   };
