@@ -131,7 +131,7 @@ export default class View {
       if (e.target.className === "editBtn") {
         const id = e.target.parentNode.parentNode.id;
         //console.log("id", id);
-        this.storeId = id;
+        this.storeId.value = id;
         console.log("storeId", this.storeId);
         let item = handleGetTask(id);
         this.openEditModal(item);
@@ -142,6 +142,7 @@ export default class View {
 
   bindEditTask(handleEditTask) {
     this.editBtn.addEventListener("click", (e) => {
+      e.preventDefault();
       const id = this.storeId.value;
       const updateName = document.getElementById("edit-name");
       const updateDes = document.getElementById("edit-description");
