@@ -31,7 +31,7 @@ export default class Controller {
   };
 
   handleEditTask = async (id, name, description) => {
-    const tasks = await this.model.updateTask(id, name, description);
+    const tasks = await this.model.updateTask({ id, name, description });
     this.onTaskListChanged(this.model.tasks);
   };
 
