@@ -46,18 +46,6 @@ export default class Model {
     return taskEdit;
   };
 
-  /*updateTask = async (id, updateName, updateDes) => {
-    const index = this.tasks.findIndex((item) => item.id === id);
-    const taskUpdate = {
-      id,
-      name: updateName,
-      description: updateDes,
-    };
-    await fetch.update(`/${path.PATH_TASK}/${id}`, taskUpdate);
-    this.tasks.splice(index, 1, taskUpdate);
-    return this.tasks;
-  };*/
-
   deleteTask = async (id) => {
     const index = this.tasks.findIndex((item) => item.id === id);
     const task = this.tasks[index];
@@ -70,5 +58,11 @@ export default class Model {
   getTaskById = (id) => {
     const task = this.tasks.find((item) => item.id === id);
     return task;
+  };
+
+  searchTask = async (query) => {
+    if (query) {
+      return this.tasks.filter((item) => item.name.includes(query));
+    }
   };
 }
