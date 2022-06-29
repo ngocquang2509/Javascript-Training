@@ -8,6 +8,7 @@ export default class Controller {
     this.view.getTaskById(this.getTaskById);
     this.view.bindEditTask(this.handleEditTask);
     this.view.bindDeleteTask(this.handleDeleteTask);
+    this.view.bindSearchTask(this.handleSearchTask);
   }
 
   init = async () => {
@@ -38,6 +39,11 @@ export default class Controller {
   handleDeleteTask = async (id) => {
     const task = await this.model.deleteTask(id);
     // this.view.displayTasks(tasks);
+    this.onTaskListChanged(this.model.tasks);
+  };
+
+  handleSearchTask = async (name) => {
+    const tasks = await this.model.searchTask(name);
     this.onTaskListChanged(this.model.tasks);
   };
 }
