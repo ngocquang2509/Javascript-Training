@@ -10,6 +10,8 @@ export default class View {
     this.addBtn = document.getElementById("submit");
     this.editBtn = document.getElementById("edit-submit");
     this.storeId = document.getElementById("store");
+    this.search = document.getElementById("search-input");
+    this.ENTER_KEY = 13;
   }
 
   resetInput() {
@@ -157,6 +159,19 @@ export default class View {
         const id = e.target.parentNode.parentNode.id;
         //console.log(id);
         handleDeleteTask(id);
+      }
+    });
+  }
+
+  bindSearchTask(handleSearchTask) {
+    this.search.addEventListener("keyup", (e) => {
+      if (e.which === this.ENTER_KEY) {
+        if (this.search.value === "") {
+          alert("Enter the task you want to find");
+        }
+        if (this.search.value !== "") {
+          handleSearchTask(this.search.value);
+        }
       }
     });
   }
