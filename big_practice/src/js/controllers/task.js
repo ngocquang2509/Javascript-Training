@@ -44,6 +44,6 @@ export default class Controller {
 
   handleSearchTask = async (name) => {
     const tasks = await this.model.searchTask(name);
-    this.onTaskListChanged(this.model.tasks);
+    this.view.displayTasks(tasks);
   };
 }
