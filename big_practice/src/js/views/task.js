@@ -166,12 +166,7 @@ export default class View {
   bindSearchTask(handleSearchTask) {
     this.search.addEventListener("keyup", (e) => {
       if (e.which === this.ENTER_KEY) {
-        if (this.search.value === "") {
-          alert("Enter the task you want to find");
-        }
-        if (this.search.value !== "") {
-          handleSearchTask(this.search.value);
-        }
+        handleSearchTask(this.search.value.trim());
       }
     });
   }

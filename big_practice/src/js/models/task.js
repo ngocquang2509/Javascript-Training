@@ -60,9 +60,10 @@ export default class Model {
     return task;
   };
 
-  searchTask = async (query) => {
+  searchTask = (query) => {
     if (query) {
       return this.tasks.filter((item) => item.name.includes(query));
     }
+    return this.tasks;
   };
 }
