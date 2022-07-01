@@ -70,14 +70,18 @@
       </div>
       <div class="box">
         <label>Name</label>
-        <input id="edit-name" class="input" type="text">
+        <input id="edit-name" class="edit-input" type="text">
         <label>Description</label>
-        <input id="edit-description" class="input" type="text">
-        <input type="hidden" id="store">
-        <div class="button">
-          <button type="button" class="btn cancel" id="edit-cancel">Cancel</button>
-          <button type="submit" class="btn create" id="edit-submit">Submit</button>
-        </div>
+        <input id="edit-description" class="edit-input" type="text">
+        <label>Status</label>
+        <select id="edit-status" class="edit-input">
+          <option value="1">Incomplete</option>
+          <option value="2">Complete</option>
+          <input type="hidden" id="store">
+          <div class="button">
+            <button type="button" class="btn cancel" id="edit-cancel">Cancel</button>
+            <button type="submit" class="btn create" id="edit-submit">Submit</button>
+          </div>
       </div>
     </form>
   </div>
