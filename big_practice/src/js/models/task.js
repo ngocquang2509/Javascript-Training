@@ -38,6 +38,7 @@ export default class Model {
       ...oldTask,
       name: task.name,
       description: task.description,
+      complete: task.complete,
     };
     const taskEdit = await fetch.update(`/${path.PATH_TASK}/${task.id}`, param);
 
@@ -66,4 +67,17 @@ export default class Model {
     }
     return this.tasks;
   };
+
+  // doneTask = async (task = {}) => {
+  //   oldTask = this.getTaskById(task.id);
+  //   const param = {
+  //     ...oldTask,
+  //     complete: true,
+  //   };
+  //   const taskDone = await fetch.update(`/${path.PATH_TASK}/${task.id}`, param);
+
+  //   const index = this.tasks.findIndex((item) => item.id === task.id);
+  //   this.tasks.splice(index, 1, taskDone);
+  //   return taskDone;
+  // };
 }

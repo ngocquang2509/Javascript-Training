@@ -9,6 +9,7 @@ export default class Controller {
     this.view.bindEditTask(this.handleEditTask);
     this.view.bindDeleteTask(this.handleDeleteTask);
     this.view.bindSearchTask(this.handleSearchTask);
+    //this.view.bindDoneTask(this.handleDoneTask);
   }
 
   init = async () => {
@@ -31,8 +32,13 @@ export default class Controller {
     return task;
   };
 
-  handleEditTask = async (id, name, description) => {
-    const tasks = await this.model.updateTask({ id, name, description });
+  handleEditTask = async (id, name, description, complete) => {
+    const tasks = await this.model.updateTask({
+      id,
+      name,
+      description,
+      complete,
+    });
     this.onTaskListChanged(this.model.tasks);
   };
 
@@ -46,4 +52,9 @@ export default class Controller {
     const tasks = this.model.searchTask(name);
     this.onTaskListChanged(tasks);
   };
+
+  // handleDoneTask = async (id, complete) => {
+  //   const tasks = await this.model.doneTask({ id, complete });
+  //   this.onTaskListChanged(this.model.tasks);
+  // };
 }
