@@ -11,7 +11,6 @@ export default class View {
     this.editBtn = document.getElementById("edit-submit");
     this.storeId = document.getElementById("store");
     this.search = document.getElementById("search-input");
-    this.status = document.getElementById("edit-status");
     this.ENTER_KEY = 13;
   }
 
@@ -122,25 +121,17 @@ export default class View {
     if (task) {
       this.editName.value = task.name;
       this.editDes.value = task.description;
-      if (this.status.selectedIndex > 0) {
-        if ("2" === this.status.options[this.status.selectedIndex].value) {
-          return (task.complete = true);
-        }
-      }
-      console.log("taskTest", task);
-      console.log("status", task.complete);
+    }
+    var a = document.getElementById("task-incomplete");
+    var b = document.getElementById("task-complete");
+    if ((task.complete = false)) {
+      a.checked = true;
+    } else {
+      b.checked = true;
     }
     let open = document.getElementById("edit-modal");
     open.style.visibility = "visible";
   }
-
-  // doneTask() {
-  //   if (this.status.selectedIndex > 0) {
-  //     if ("2" === this.status.options[this.status.selectedIndex].value) {
-  //       return true;
-  //     }
-  //   }
-  // }
 
   getTaskById(handleGetTask) {
     this.taskList.addEventListener("click", (e) => {
