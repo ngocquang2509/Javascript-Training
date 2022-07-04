@@ -73,15 +73,18 @@
         <input id="edit-name" class="edit-input" type="text">
         <label>Description</label>
         <input id="edit-description" class="edit-input" type="text">
-        <label>Status</label>
-        <select id="edit-status" class="edit-input">
-          <option value="1">Incomplete</option>
-          <option value="2">Complete</option>
-          <input type="hidden" id="store">
-          <div class="button">
-            <button type="button" class="btn cancel" id="edit-cancel">Cancel</button>
-            <button type="submit" class="btn create" id="edit-submit">Submit</button>
-          </div>
+        <form>
+          <p>Status</p>
+          <input type="radio" id="task-incomplete" value="incomplete" name="radioBtn">
+          <label for="task-incomplete">Incomplete</label><br>
+          <input type="radio" id="task-complete" value="complete" name="radioBtn">
+          <label for="task-complete">Complete</label>
+        </form>
+        <input type="hidden" id="store">
+        <div class="button">
+          <button type="button" class="btn cancel" id="edit-cancel">Cancel</button>
+          <button type="submit" class="btn create" id="edit-submit">Submit</button>
+        </div>
       </div>
     </form>
   </div>
