@@ -12,6 +12,8 @@ export default class View {
     this.storeId = document.getElementById("store");
     this.search = document.getElementById("search-input");
     this.check = document.getElementById("task-complete");
+    this.addModal = document.getElementById("add-modal");
+    this.editModal = document.getElementById("edit-modal");
     this.ENTER_KEY = 13;
   }
 
@@ -76,27 +78,33 @@ export default class View {
   };
 
   openAddModal = () => {
-    const addModal = document.getElementById("popup");
+    this.addModal.style.visibility = "visible";
+  };
+
+  bindOpenAddModal = () => {
     const openModal = document.getElementById("add-new-task");
     openModal.addEventListener("click", () => {
-      addModal.style.visibility = "visible";
-      this.resetInput();
+      this.openAddModal();
     });
   };
 
   closeAddModal = () => {
-    const addModal = document.getElementById("popup");
-    addModal.style.visibility = "hidden";
+    this.addModal.style.visibility = "hidden";
     this.resetInput();
   };
 
+  bindCloseAddModal = () => {
+    const closeModal = document.getElementById("cancel");
+    closeModal.addEventListener("click", () => {
+      this.closeAddModal();
+    });
+  };
+
   bindAddTask = (handleAddTask) => {
-    this.openAddModal();
     this.addBtn.addEventListener("click", (e) => {
       e.preventDefault();
       if (this.taskName.value == "") {
         alert("Please enter task name");
-        //swal("Please enter task name");
         return false;
       }
       handleAddTask(this.taskName.value, this.taskDescripion.value);
@@ -104,28 +112,26 @@ export default class View {
       swal("Task create successful !");
       return true;
     });
-    let close = document.getElementById("cancel");
-    close.addEventListener("click", () => {
-      this.closeAddModal();
-    });
-  };
-
-  closeEditModal = () => {
-    let close = document.getElementById("edit-modal");
-    let cancel = document.getElementById("edit-cancel");
-    cancel.addEventListener("click", (e) => {
-      close.style.visibility = "hidden";
-    });
   };
 
   openEditModal = (task) => {
     if (task) {
       this.editName.value = task.name;
       this.editDes.value = task.description;
-      this.check.checked = task.complete; // false
+      this.check.checked = task.complete;
     }
-    let open = document.getElementById("edit-modal");
-    open.style.visibility = "visible";
+    this.editModal.style.visibility = "visible";
+  };
+
+  closeEditModal = () => {
+    this.editModal.style.visibility = "hidden";
+  };
+
+  bindCloseEditModal = () => {
+    const closeModal = document.getElementById("edit-cancel");
+    closeModal.addEventListener("click", () => {
+      this.closeEditModal();
+    });
   };
 
   getTaskById = (handleGetTask) => {
@@ -135,11 +141,9 @@ export default class View {
         const id = e.target.parentNode.parentNode.id;
         //console.log("id", id);
         this.storeId.value = id;
-        //console.log("storeId", this.storeId);
         let item = handleGetTask(id);
         this.openEditModal(item);
       }
-      this.closeEditModal();
     });
   };
 
@@ -151,6 +155,7 @@ export default class View {
       const updateDes = document.getElementById("edit-description");
       const updateComplete = this.check.checked;
       handleEditTask(id, updateName.value, updateDes.value, updateComplete);
+      this.closeEditModal();
     });
   };
 

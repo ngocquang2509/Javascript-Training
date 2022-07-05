@@ -4,7 +4,6 @@ import path from "../constant.js";
 import today from "../helpers/datetime.js";
 
 export default class Model {
-  //tasks = [];
   constructor() {
     this.tasks = [];
   }

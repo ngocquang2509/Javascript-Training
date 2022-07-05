@@ -4,12 +4,14 @@ export default class Controller {
     this.view = view;
 
     this.model.bindTaskListChanged(this.onTaskListChanged);
+    this.view.bindOpenAddModal();
+    this.view.bindCloseAddModal();
+    this.view.bindCloseEditModal();
     this.view.bindAddTask(this.handleAddTask);
     this.view.getTaskById(this.getTaskById);
     this.view.bindEditTask(this.handleEditTask);
     this.view.bindDeleteTask(this.handleDeleteTask);
     this.view.bindSearchTask(this.handleSearchTask);
-    //this.view.bindDoneTask(this.handleDoneTask);
   }
 
   init = async () => {
@@ -28,7 +30,6 @@ export default class Controller {
 
   getTaskById = (id) => {
     const task = this.model.getTaskById(id);
-    //console.log("taskCtrl", task);
     return task;
   };
 
@@ -44,8 +45,7 @@ export default class Controller {
 
   handleDeleteTask = async (id) => {
     const task = await this.model.deleteTask(id);
-    // this.view.displayTasks(tasks);
-    this.onTaskListChanged(this.model.tasks);
+    this.view.displayTasks(tasks);
   };
 
   handleSearchTask = (name) => {
