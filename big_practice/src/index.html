@@ -39,21 +39,17 @@
     </div>
   </div>
 
-  <div class="popup" id="add-modal">
+  <div class="add-modal" id="add-modal">
     <div class="popup__content">
       <form class="new-task">
         <div class="new-task-header">
           <h2>New Task</h2>
         </div>
         <div class="box">
-          <label for="task--name">Name</label>
-          <div>
-            <input id="add-name" class="input" type="text" placeholder="Task name">
-          </div>
-          <label for="task--description">Description</label>
-          <div>
-            <input id="add-description" class="input" type="text" placeholder="Task description">
-          </div>
+          <label>Name</label>
+          <input id="add-name" class="input" type="text" placeholder="Task name">
+          <label>Description</label>
+          <input id="add-description" class="input" type="text" placeholder="Task description">
           <div class="button">
             <button type="button" class="btn cancel" id="cancel">Cancel</button>
             <button type="submit" class="btn create" id="submit">Create</button>

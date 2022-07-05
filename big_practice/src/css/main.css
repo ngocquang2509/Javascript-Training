@@ -41,6 +41,11 @@ input {
   cursor: pointer;
 }
 
+.add:hover {
+  background-color: white;
+  border: #dae5d0 solid 2px;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -89,9 +94,6 @@ input {
   align-items: center;
 }
 
-/* .task-details {
-} */
-
 .task-name {
   margin: 20px;
   font-size: 32px;
@@ -113,7 +115,7 @@ input {
   margin: 0 20px;
 }
 
-.popup {
+.add-modal {
   visibility: hidden;
   position: fixed;
   top: 25%;
@@ -158,11 +160,22 @@ input {
   font-size: 16px;
 }
 
+.cancel:hover {
+  background-color: white;
+  border: #ff5b5b solid 2px;
+  color: black;
+}
+
 .create {
   background-color: #71ff02;
   padding: 10px 30px;
   border: solid 1px black;
   font-size: 16px;
+}
+
+.create:hover {
+  background-color: white;
+  border: #71ff02 solid 2px;
 }
 
 .input {
@@ -185,38 +198,42 @@ input {
   align-items: center;
 }
 
-/* .moreBtn {
-  cursor: pointer;
-  margin-bottom: 30px;
-  margin-left: 20px;
+.task-complete {
+  background-color: #dae5d0;
+  margin-right: 20px;
+  padding: 10px 30px;
+  border-radius: 50px;
+  font-size: 14px;
 }
-
-.moreBtn:after {
-  content: "\2026";
-  font-size: 32px;
-} */
-
-/* .complete {
-  margin-bottom: 30px;
-} */
 
 .editBtn {
   margin-right: 20px;
-  padding: 10px 30px;
+  padding: 10px 40px;
   border: none;
   border-radius: 50px;
   background-color: yellow;
   cursor: pointer;
 }
 
+.editBtn:hover {
+  background-color: white;
+  border: #ffd700 solid 2px;
+}
+
 .delBtn {
   margin-right: 20px;
-  padding: 10px 20px;
+  padding: 10px 30px;
   border: none;
   border-radius: 50px;
   background-color: red;
   color: white;
   cursor: pointer;
+}
+
+.delBtn:hover {
+  background-color: white;
+  color: black;
+  border: red solid 2px;
 }
 
 .edit-modal {
