@@ -52,9 +52,4 @@ export default class Controller {
     const tasks = this.model.searchTask(name);
     this.onTaskListChanged(tasks);
   };
-
-  // handleDoneTask = async (id, complete) => {
-  //   const tasks = await this.model.doneTask({ id, complete });
-  //   this.onTaskListChanged(this.model.tasks);
-  // };
 }

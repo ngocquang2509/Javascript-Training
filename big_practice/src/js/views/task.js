@@ -15,13 +15,13 @@ export default class View {
     this.ENTER_KEY = 13;
   }
 
-  resetInput() {
+  resetInput = () => {
     this.taskName.value = "";
     this.taskDescripion.value = "";
     this.storeId.value = "";
-  }
+  };
 
-  displayTasks(tasks) {
+  displayTasks = (tasks) => {
     //console.log("display tasks");
     while (this.taskList.firstChild) {
       this.taskList.removeChild(this.taskList.firstChild);
@@ -73,24 +73,24 @@ export default class View {
         this.taskList.appendChild(item);
       });
     }
-  }
+  };
 
-  openAddModal() {
+  openAddModal = () => {
     const addModal = document.getElementById("popup");
     const openModal = document.getElementById("add-new-task");
     openModal.addEventListener("click", () => {
       addModal.style.visibility = "visible";
       this.resetInput();
     });
-  }
+  };
 
-  closeAddModal() {
+  closeAddModal = () => {
     const addModal = document.getElementById("popup");
     addModal.style.visibility = "hidden";
     this.resetInput();
-  }
+  };
 
-  bindAddTask(handleAddTask) {
+  bindAddTask = (handleAddTask) => {
     this.openAddModal();
     this.addBtn.addEventListener("click", (e) => {
       e.preventDefault();
@@ -108,17 +108,17 @@ export default class View {
     close.addEventListener("click", () => {
       this.closeAddModal();
     });
-  }
+  };
 
-  closeEditModal() {
+  closeEditModal = () => {
     let close = document.getElementById("edit-modal");
     let cancel = document.getElementById("edit-cancel");
     cancel.addEventListener("click", (e) => {
       close.style.visibility = "hidden";
     });
-  }
+  };
 
-  openEditModal(task) {
+  openEditModal = (task) => {
     if (task) {
       this.editName.value = task.name;
       this.editDes.value = task.description;
@@ -126,9 +126,9 @@ export default class View {
     }
     let open = document.getElementById("edit-modal");
     open.style.visibility = "visible";
-  }
+  };
 
-  getTaskById(handleGetTask) {
+  getTaskById = (handleGetTask) => {
     this.taskList.addEventListener("click", (e) => {
       e.preventDefault();
       if (e.target.className === "editBtn") {
@@ -141,9 +141,9 @@ export default class View {
       }
       this.closeEditModal();
     });
-  }
+  };
 
-  bindEditTask(handleEditTask) {
+  bindEditTask = (handleEditTask) => {
     this.editBtn.addEventListener("click", (e) => {
       e.preventDefault();
       const id = this.storeId.value;
@@ -152,9 +152,9 @@ export default class View {
       const updateComplete = this.check.checked;
       handleEditTask(id, updateName.value, updateDes.value, updateComplete);
     });
-  }
+  };
 
-  bindDeleteTask(handleDeleteTask) {
+  bindDeleteTask = (handleDeleteTask) => {
     this.taskList.addEventListener("click", (e) => {
       e.preventDefault();
       if (e.target.className === "delBtn") {
@@ -163,27 +163,17 @@ export default class View {
         handleDeleteTask(id);
       }
     });
-  }
+  };
 
-  bindSearchTask(handleSearchTask) {
+  bindSearchTask = (handleSearchTask) => {
     this.search.addEventListener("keyup", (e) => {
       if (e.which === this.ENTER_KEY) {
         handleSearchTask(this.search.value.trim());
       }
     });
-  }
+  };
 
-  bindTaskListChanged(callback) {
+  bindTaskListChanged = (callback) => {
     this.onTaskListchanged = callback;
-  }
-
-  bindDoneTask(handleDoneTask) {
-    this.taskList.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (e.target.className === "btn complete") {
-        const id = e.target.parentNode.parentNode.id;
-        console.log("id", id);
-      }
-    });
-  }
+  };
 }
