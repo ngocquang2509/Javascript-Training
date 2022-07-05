@@ -57,6 +57,7 @@ input {
   height: 572px;
   border-radius: 5px;
   background-color: #dae5d0;
+  overflow: auto;
 }
 
 .content__add--task {
