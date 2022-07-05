@@ -40,7 +40,8 @@ export default class Model {
       description: task.description,
       complete: task.complete,
     };
-    console.log("param", param);
+    console.log("a", param);
+    console.log("status", task.complete);
     const taskEdit = await fetch.update(`/${path.PATH_TASK}/${task.id}`, param);
 
     const index = this.tasks.findIndex((item) => item.id === task.id);

@@ -11,6 +11,7 @@ export default class View {
     this.editBtn = document.getElementById("edit-submit");
     this.storeId = document.getElementById("store");
     this.search = document.getElementById("search-input");
+    this.check = document.getElementById("task-complete");
     this.ENTER_KEY = 13;
   }
 
@@ -121,13 +122,7 @@ export default class View {
     if (task) {
       this.editName.value = task.name;
       this.editDes.value = task.description;
-    }
-    var a = document.getElementById("task-incomplete");
-    var b = document.getElementById("task-complete");
-    if ((task.complete = false)) {
-      a.checked = true;
-    } else {
-      b.checked = true;
+      this.check.checked = task.complete; // false
     }
     let open = document.getElementById("edit-modal");
     open.style.visibility = "visible";
@@ -140,7 +135,7 @@ export default class View {
         const id = e.target.parentNode.parentNode.id;
         //console.log("id", id);
         this.storeId.value = id;
-        console.log("storeId", this.storeId);
+        //console.log("storeId", this.storeId);
         let item = handleGetTask(id);
         this.openEditModal(item);
       }
@@ -154,7 +149,8 @@ export default class View {
       const id = this.storeId.value;
       const updateName = document.getElementById("edit-name");
       const updateDes = document.getElementById("edit-description");
-      handleEditTask(id, updateName.value, updateDes.value);
+      const updateComplete = this.check.checked;
+      handleEditTask(id, updateName.value, updateDes.value, updateComplete);
     });
   }
 
