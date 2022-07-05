@@ -57,7 +57,7 @@ export default class View {
 
         const completeBtn = document.createElement("button");
         completeBtn.className = "btn complete";
-        completeBtn.textContent = "Complete";
+        completeBtn.textContent = task.complete ? "Complete" : "Pending";
 
         const editBtn = document.createElement("button");
         editBtn.className = "editBtn";
