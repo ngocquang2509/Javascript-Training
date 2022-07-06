@@ -53,7 +53,7 @@ export default class Model {
     const task = this.tasks[index];
 
     await fetch.remove(`/${path.PATH_TASK}/${id}`, task);
-    this.tasks.splice(index, 1, task);
+    this.tasks.splice(index, 1);
     return this.tasks;
   };
 

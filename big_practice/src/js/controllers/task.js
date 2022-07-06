@@ -45,7 +45,8 @@ export default class Controller {
 
   handleDeleteTask = async (id) => {
     const task = await this.model.deleteTask(id);
-    this.view.displayTasks(tasks);
+    //this.view.displayTasks(tasks);
+    this.onTaskListChanged(this.model.tasks);
   };
 
   handleSearchTask = (name) => {
