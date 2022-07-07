@@ -24,7 +24,6 @@ export default class View {
   };
 
   displayTasks = (tasks) => {
-    //console.log("display tasks");
     while (this.taskList.firstChild) {
       this.taskList.removeChild(this.taskList.firstChild);
     }
@@ -35,8 +34,7 @@ export default class View {
       this.taskList.append(message);
     } else {
       tasks.forEach((task) => {
-        // console.log("task", task);
-        const item = document.createElement("li");
+        let item = document.createElement("li");
         item.id = task.id;
         item.className = "content__task";
 
@@ -107,7 +105,10 @@ export default class View {
         alert("Please enter task name");
         return false;
       }
-      handleAddTask(this.taskName.value, this.taskDescripion.value);
+      handleAddTask(
+        this.taskName.value.trim(),
+        this.taskDescripion.value.trim()
+      );
       this.closeAddModal();
       swal("Task create successful !");
       return true;
