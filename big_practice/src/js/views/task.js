@@ -1,5 +1,3 @@
-import swal from "sweetalert";
-
 export default class View {
   constructor() {
     this.taskName = document.getElementById("add-name");
@@ -110,7 +108,7 @@ export default class View {
         this.taskDescripion.value.trim()
       );
       this.closeAddModal();
-      swal("Task create successful !");
+      alert("Task create successful !");
       return true;
     });
   };
