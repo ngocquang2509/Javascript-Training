@@ -14,6 +14,7 @@ export default class Controller {
     this.view.bindSearchTask(this.handleSearchTask);
   }
 
+  //Display the lis of task
   init = async () => {
     const tasks = await this.model.getTask();
     this.onTaskListChanged(this.model.tasks);
@@ -23,16 +24,33 @@ export default class Controller {
     this.view.displayTasks(tasks);
   };
 
+  /**
+   * Use name and description from view to call model
+   * @param {string} name
+   * @param {string} description
+   */
   handleAddTask = async (name, description) => {
     const task = await this.model.addTask(name, description);
     this.onTaskListChanged(this.model.tasks);
   };
 
+  /**
+   * User id to call model to get task
+   * @param {string} id
+   * @returns
+   */
   getTaskById = (id) => {
     const task = this.model.getTaskById(id);
     return task;
   };
 
+  /**
+   *
+   * @param {string} id
+   * @param {string} name
+   * @param {string} description
+   * @param {string} complete
+   */
   handleEditTask = async (id, name, description, complete) => {
     const tasks = await this.model.updateTask({
       id,
@@ -43,9 +61,12 @@ export default class Controller {
     this.onTaskListChanged(this.model.tasks);
   };
 
+  /**
+   * Use id to call model to delete task
+   * @param {string} id
+   */
   handleDeleteTask = async (id) => {
     const task = await this.model.deleteTask(id);
-    //this.view.displayTasks(tasks);
     this.onTaskListChanged(this.model.tasks);
   };
 

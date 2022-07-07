@@ -15,6 +15,7 @@
     <h1>My TODO</h1>
   </header>
 
+  <!-- Button add new task -->
   <div class="container">
     <div class="content__add--task">
       <div class="add-btn">
@@ -25,20 +26,25 @@
     </div>
   </div>
 
+  <!-- Filter function -->
   <div class="container">
     <div class="content">
       <div class="content__filter">
+        <!-- Search bar -->
         <div class="content__search">
           <input id="search-input" type="search" placeholder="Search...">
         </div>
+        <!-- Sort by -->
         <div class="content__sort">
           <p>Sort by: Created</p>
         </div>
       </div>
+      <!-- List of tasks -->
       <ul class="tasklist" id="tasklist"></ul>
     </div>
   </div>
 
+  <!-- Add new task popup -->
   <div class="add-modal" id="add-modal">
     <div class="popup__content">
       <form class="new-task">
@@ -59,6 +65,7 @@
     </div>
   </div>
 
+  <!-- Edit task poup -->
   <div class="edit-modal" id="edit-modal">
     <form class="edit-form">
       <div class="edit-header">

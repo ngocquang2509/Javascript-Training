@@ -41,6 +41,7 @@ input {
   cursor: pointer;
 }
 
+/* Add new task hover button */
 .add:hover {
   background-color: white;
   border: #dae5d0 solid 2px;
@@ -60,6 +61,7 @@ input {
   overflow: auto;
 }
 
+/* Add new task button */
 .content__add--task {
   width: 861px;
   align-items: flex-start;
@@ -73,6 +75,7 @@ input {
   margin-right: 50px;
 }
 
+/* Search bar */
 .content__search input {
   width: 650px;
   background-color: #fefbe7;
@@ -95,6 +98,7 @@ input {
   align-items: center;
 }
 
+/* Task information */
 .task-name {
   margin: 20px;
   font-size: 32px;
@@ -116,18 +120,12 @@ input {
   margin: 0 20px;
 }
 
+/* Popup add new task */
 .add-modal {
   visibility: hidden;
   position: fixed;
   top: 25%;
   right: 35%;
-}
-
-.overlay {
-  visibility: hidden;
-  filter: blur(10px);
-  pointer-events: none;
-  user-select: none;
 }
 
 .popup__content {
@@ -216,6 +214,7 @@ input {
   cursor: pointer;
 }
 
+/* Edit task popup */
 .editBtn:hover {
   background-color: white;
   border: #ffd700 solid 2px;

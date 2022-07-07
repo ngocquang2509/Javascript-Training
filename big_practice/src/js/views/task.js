@@ -15,12 +15,14 @@ export default class View {
     this.ENTER_KEY = 13;
   }
 
+  //Reset the input fields after user taking action
   resetInput = () => {
     this.taskName.value = "";
     this.taskDescripion.value = "";
     this.storeId.value = "";
   };
 
+  //Show all tasks in the list
   displayTasks = (tasks) => {
     while (this.taskList.firstChild) {
       this.taskList.removeChild(this.taskList.firstChild);
@@ -73,10 +75,12 @@ export default class View {
     }
   };
 
+  //Show the modal for add task
   openAddModal = () => {
     this.addModal.style.visibility = "visible";
   };
 
+  //Set event click for button add task
   bindOpenAddModal = () => {
     const openModal = document.getElementById("add-new-task");
     openModal.addEventListener("click", () => {
@@ -84,11 +88,13 @@ export default class View {
     });
   };
 
+  //Close the add task modal
   closeAddModal = () => {
     this.addModal.style.visibility = "hidden";
     this.resetInput();
   };
 
+  //Set event click for button close add task
   bindCloseAddModal = () => {
     const closeModal = document.getElementById("cancel");
     closeModal.addEventListener("click", () => {
@@ -96,6 +102,7 @@ export default class View {
     });
   };
 
+  //Add a new task
   bindAddTask = (handleAddTask) => {
     this.addBtn.addEventListener("click", (e) => {
       e.preventDefault();
@@ -113,6 +120,7 @@ export default class View {
     });
   };
 
+  //Show the modal for edit task and get value of selected task
   openEditModal = (task) => {
     if (task) {
       this.editName.value = task.name;
@@ -122,10 +130,12 @@ export default class View {
     this.editModal.style.visibility = "visible";
   };
 
+  //Close the edit task modal
   closeEditModal = () => {
     this.editModal.style.visibility = "hidden";
   };
 
+  //Set event click for button close edit task
   bindCloseEditModal = () => {
     const closeModal = document.getElementById("edit-cancel");
     closeModal.addEventListener("click", () => {
@@ -133,6 +143,7 @@ export default class View {
     });
   };
 
+  //Get the value of selected task
   getTaskById = (handleGetTask) => {
     this.taskList.addEventListener("click", (e) => {
       e.preventDefault();
@@ -146,6 +157,7 @@ export default class View {
     });
   };
 
+  //Edit a task
   bindEditTask = (handleEditTask) => {
     this.editBtn.addEventListener("click", (e) => {
       e.preventDefault();
@@ -158,6 +170,7 @@ export default class View {
     });
   };
 
+  //Delete a task
   bindDeleteTask = (handleDeleteTask) => {
     this.taskList.addEventListener("click", (e) => {
       e.preventDefault();
@@ -169,6 +182,7 @@ export default class View {
     });
   };
 
+  //Search task by name
   bindSearchTask = (handleSearchTask) => {
     this.search.addEventListener("keyup", (e) => {
       if (e.which === this.ENTER_KEY) {

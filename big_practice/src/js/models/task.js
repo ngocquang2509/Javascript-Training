@@ -17,6 +17,11 @@ export default class Model {
     return this.tasks;
   };
 
+  /**
+   * USE API from fetch import and param name, description from controller in add task
+   * @param {string} name
+   * @param {string} description
+   */
   addTask = async (name, description) => {
     const item = await fetch.create(`/${path.PATH_TASK}`, {
       id: uuidv4(),
@@ -31,6 +36,11 @@ export default class Model {
     return item;
   };
 
+  /**
+   * Use API from fetch import and param id from controller in edit task
+   * @param {object} task
+   * @returns
+   */
   updateTask = async (task = {}) => {
     const oldTask = this.getTaskById(task.id);
     const param = {
@@ -48,20 +58,35 @@ export default class Model {
     return taskEdit;
   };
 
+  /**
+   * Use API from fetch import and param id from controller in delete task
+   * @param {string} id
+   * @returns
+   */
   deleteTask = async (id) => {
     const index = this.tasks.findIndex((item) => item.id === id);
     const task = this.tasks[index];
 
-    await fetch.remove(`/${id}`, task);
+    await fetch.remove(`/${path.PATH_TASK}/${id}`, task);
     this.tasks.splice(index, 1);
     return this.tasks;
   };
 
+  /**
+   * Use API from fetch import and param id from controller in get task by id
+   * @param {string} id
+   * @returns
+   */
   getTaskById = (id) => {
     const task = this.tasks.find((item) => item.id === id);
     return task;
   };
 
+  /**
+   *
+   * @param {string} query
+   * @returns
+   */
   searchTask = (query) => {
     if (query) {
       return this.tasks.filter((item) => item.name.includes(query));
